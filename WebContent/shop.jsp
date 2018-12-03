@@ -16,7 +16,7 @@
 </head>
 
 <body class="">
-  <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top" style="	width: 100%;	height: 70px;">
     <div class="container">
       <div class="row">
         <div class="col-md-12 w-50"><img src="logo.png" width="60" height="60" class="d-inline-block align-top" alt=""></div>
@@ -28,14 +28,13 @@
         <ul class="navbar-nav">
           <li class="nav-item mx-3">
             <a class="nav-link align-items-center d-flex" href="#"><i class="fa fa-user fa-fw fa-2x"></i>
-              &nbsp;PROFILE</a>
+              </i>&nbsp;PROFILE</a>
           </li>
           <li class="nav-item mx-3">
             <a class="nav-link align-items-center d-flex" href="#"><i class="fa fa-user fa-fw fa-cogs fa-2x"></i>
-              &nbsp;SETTINGS</a>
+              </i>&nbsp;SETTINGS</a>
           </li>
-          <li class="nav-item dropdown mx-3" style=""> <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-fw fa-shopping-cart fa-2x"></i><i class="now-ui-icons 
-shopping_cart-simple x2 mr-2 lead"></i> Cart</a>
+          <li class="nav-item dropdown mx-3" style=""> <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-fw fa-shopping-cart fa-2x"></i> Cart</a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink"> <a class="dropdown-item" href="#">Total Price:&nbsp;</a></div>
           </li>
         </ul>
