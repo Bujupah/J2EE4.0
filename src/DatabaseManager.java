@@ -29,9 +29,7 @@ public class DatabaseManager {
 	}
 	
 	public boolean TestClient(String email,String password) throws SQLException { // testing if authenticated or no, returns true when its true XD
-		Statement statement=null;
 		ResultSet result = null;
-		
 		LoadDatabase();
 		try {
 			PreparedStatement preStatement = connection.prepareStatement("SELECT * FROM client WHERE email=? AND password=?");
