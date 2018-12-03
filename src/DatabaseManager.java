@@ -1,7 +1,7 @@
 import java.sql.*;
 public class DatabaseManager {
 	private Connection connection;
-	private void LoadDatabase() {
+	private void LoadDatabase() { // basic shit to connect to the database
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 		}catch(ClassNotFoundException e) {
@@ -14,7 +14,7 @@ public class DatabaseManager {
 			e.printStackTrace();
 		}
 	}
-	public void AddClient(String nom,String password, int phone,String email) {
+	public void AddClient(String nom,String password, int phone,String email) { // adding a client to the database
 		LoadDatabase();
 		try {
 			PreparedStatement preStatement = connection.prepareStatement("INSERT INTO client VALUES(?,?,?,?)");
@@ -28,7 +28,7 @@ public class DatabaseManager {
 		}
 	}
 	
-	public boolean TestClient(String email,String password) throws SQLException {
+	public boolean TestClient(String email,String password) throws SQLException { // testing if authenticated or no, returns true when its true XD
 		Statement statement=null;
 		ResultSet result = null;
 		
@@ -42,5 +42,8 @@ public class DatabaseManager {
 			e.printStackTrace();
 		}
 			return result.first()?true:false;
+	}
+	public void getProducts() {
+		// Force it when u gonna display informations to the site !
 	}
 }
