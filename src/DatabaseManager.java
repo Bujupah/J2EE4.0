@@ -39,7 +39,7 @@ public class DatabaseManager {
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}
-			return result.first()?true:false;
+			return result.next()?true:false;
 	}
 	public void getProducts() {
 		// Force it when u gonna display informations to the site !
