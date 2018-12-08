@@ -22,7 +22,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12 w-50"><img src="logo.png" width="60" height="60" class="d-inline-block align-top" alt=""></div>
-      </div><a class="navbar-brand" href="#" style="">Pikkatchuuuuu Store</a>
+      </div><a class="navbar-brand" href="index.jsp" style="">Pikkatchuuuuu Store</a>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarPrimaryContent">
         <span class="navbar-toggler-icon"></span>
       </button>

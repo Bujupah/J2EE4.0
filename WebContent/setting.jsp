@@ -22,7 +22,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12 w-50"><img src="logo.png" width="60" height="60" class="d-inline-block align-top" alt=""></div>
-      </div><a class="navbar-brand" href="#" style="">Pikkatchuuuuu Store</a>
+      </div><a class="navbar-brand" href="index.jsp" style="">Pikkatchuuuuu Store</a>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarPrimaryContent">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -39,6 +39,11 @@
                   %>     
               </a>
           </li>
+          <li class="nav-item mx-3">
+            <a class="nav-link align-items-center d-flex" href="shop.jsp">
+            <i class="fa fa-shopping-bag  fa-fw fa-2x"></i>
+              </i>&nbsp;Shop</a>
+          </li> 
           <li class="nav-item dropdown mx-3" style=""> 
           <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <i class="fa fa-fw fa-shopping-cart fa-2x"></i>Cart</a>
@@ -144,7 +149,7 @@
           <div class="row h-75">
             <div class="col-md-12 m-5 px-5 pl-5 pr-5 pt-5">
               <h5 class="mx-5 mt-5">
-                <b>COSPLAYS?</b><br><b>Click to enter the universe in&nbsp;</b><br><b>now !</b><br></h5><a class="btn btn-dark btn-lg rounded active" href="index.jsp"  style="">Shop</a>
+                <b>COSPLAYS?</b><br><b>Click to enter the universe in&nbsp;</b><br><b>now !</b><br></h5><a class="btn btn-dark btn-lg rounded active" href="shop.jsp"  style="">Shop</a>
             </div>
           </div>
         </div>

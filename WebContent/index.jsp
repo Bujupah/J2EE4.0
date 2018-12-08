@@ -36,14 +36,18 @@
                   %>
               </a>
           </li>
-          <% if(client!=null)	
-                  out.print("<li class='nav-item mx-3'><a class='nav-link align-items-center d-flex' href='setting.jsp'><i class='fa fa-user fa-fw fa-cogs fa-2x'></i></i>&nbsp;SETTING</a></li>");
-              %>
-          <li class="nav-item dropdown mx-3" style=""> 
-          <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <i class="fa fa-fw fa-shopping-cart fa-2x"></i>Cart</a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink"> <a class="dropdown-item" href="#">Total Price:&nbsp;</a></div>
+          <li class="nav-item mx-3">
+            <a class="nav-link align-items-center d-flex" href="shop.jsp">
+            <i class="fa fa-shopping-bag  fa-fw fa-2x"></i>
+              </i>&nbsp;Shop</a>
           </li>
+          <% if(client!=null)	
+          	out.print("<li class='nav-item mx-3'><a class='nav-link align-items-center d-flex' href='setting.jsp'><i class='fa fa-user fa-fw fa-cogs fa-2x'></i></i>&nbsp;SETTING</a></li>");
+          %>
+          </li> 
+          <% if(client!=null)	
+          	out.print("<li class='nav-item mx-3'><a class='nav-link dropdown-toggle' href='#' id='navbarDropdownMenuLink' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'><i class='fa fa-fw fa-shopping-cart fa-2x'></i>Cart</a><div class='dropdown-menu' aria-labelledby='navbarDropdownMenuLink'><a class='dropdown-item' href='#'>Total Price:&nbsp;</a></div>");
+          %>
         </ul>
       </div>
     </div>
@@ -53,7 +57,7 @@
       <div class="row h-25">
         <div class="col-md-4"></div>
         <div class="col-md-4 px-5 pt-5 mt-5" style="">
-          <h4 class="text-center pt-5 px-5">Our Store</h4>
+          <h4 class="text-center pt-5 px-5">Welcome to Pikkatchuuuu Store</h4>
         </div>
         <div class="col-md-4"></div>
       </div>

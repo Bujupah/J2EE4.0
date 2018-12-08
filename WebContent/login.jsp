@@ -22,7 +22,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12 w-50"><img src="logo.png" width="60" height="60" class="d-inline-block align-top" alt=""></div>
-      </div><a class="navbar-brand" href="#" style="">Pikkatchuuuuu Store</a>
+      </div><a class="navbar-brand" href="index.jsp" style="">Pikkatchuuuuu Store</a>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarPrimaryContent">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -35,9 +35,8 @@
           <% if(client!=null)	
                   out.print("<li class='nav-item mx-3'><a class='nav-link align-items-center d-flex' href='setting.jsp'><i class='fa fa-user fa-fw fa-cogs fa-2x'></i></i>&nbsp;SETTING</a></li>");
               %>
-          <li class="nav-item dropdown mx-3" style=""> <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-fw fa-shopping-cart fa-2x"></i> Cart</a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink"> <a class="dropdown-item" href="#">Total Price:&nbsp;</a></div>
-          </li>
+          
+
         </ul>
       </div>
     </div>

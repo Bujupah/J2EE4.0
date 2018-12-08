@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-
+<% com.beans.Client client = (com.beans.Client)session.getAttribute("client");%>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -20,23 +20,29 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12 w-50"><img src="logo.png" width="60" height="60" class="d-inline-block align-top" alt=""></div>
-      </div><a class="navbar-brand" href="#" style="">Pikkatchuuuuu Store</a>
+      </div><a class="navbar-brand" href="index.jsp" style="">Pikkatchuuuuu Store</a>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarPrimaryContent">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse text-center justify-content-end" id="navbarPrimaryContent">
         <ul class="navbar-nav">
           <li class="nav-item mx-3">
-            <a class="nav-link align-items-center d-flex" href="#"><i class="fa fa-user fa-fw fa-2x"></i>
-              </i>&nbsp;PROFILE</a>
+            <a class="nav-link align-items-center d-flex" href="<%if(client!=null) out.print("#");else out.print("login.jsp");%>">
+            <i class="fa fa-user fa-fw fa-2x"></i>
+              </i>&nbsp;
+              <% if(client!=null)
+                	out.print(client.getName());
+                  else out.print("CONNECT");
+                  %>
+              </a>
           </li>
-          <li class="nav-item mx-3">
-            <a class="nav-link align-items-center d-flex" href="#"><i class="fa fa-user fa-fw fa-cogs fa-2x"></i>
-              </i>&nbsp;SETTINGS</a>
-          </li>
-          <li class="nav-item dropdown mx-3" style=""> <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-fw fa-shopping-cart fa-2x"></i> Cart</a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink"> <a class="dropdown-item" href="#">Total Price:&nbsp;</a></div>
-          </li>
+          <% if(client!=null)	
+          	out.print("<li class='nav-item mx-3'><a class='nav-link dropdown-toggle' href='#' id='navbarDropdownMenuLink' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'><i class='fa fa-fw fa-shopping-cart fa-2x'></i>Cart</a><div class='dropdown-menu' aria-labelledby='navbarDropdownMenuLink'><a class='dropdown-item' href='#'>Total Price:&nbsp;</a></div></li> ");
+          %>
+          <% if(client!=null)	
+            out.print("<li class='nav-item mx-3'><a class='nav-link align-items-center d-flex' href='setting.jsp'><i class='fa fa-user fa-fw fa-cogs fa-2x'></i></i>&nbsp;SETTING</a></li>");
+          %> 
+          
         </ul>
       </div>
     </div>
@@ -46,6 +52,122 @@
       <div class="row">
         <div class="text-center mx-auto col-md-12">
           <h1>Choose your plan</h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-3 col-md-6 p-3">
+          <div class="card bg-light text-center">
+            <div class="card-body p-4">
+              <h3>I</h3>
+              <h2> <b>19$</b> </h2> <a class="btn btn-link" href="#">Get started</a>
+              <hr>
+              <ul class="list-unstyled my-3">
+                <li class="mb-1">One</li>
+                <li class="mb-1">Two</li>
+                <li class="mb-1">Three</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 p-3">
+          <div class="card bg-light text-center">
+            <div class="card-body p-4">
+              <h3>II</h3>
+              <h2> <b>49$</b> </h2> <a class="btn btn-primary" href="#">Get started</a>
+              <hr>
+              <ul class="list-unstyled my-3">
+                <li class="mb-1">Four</li>
+                <li class="mb-1">Five</li>
+                <li class="mb-1">Six</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 p-3">
+          <div class="card bg-light text-center">
+            <div class="card-body p-4">
+              <h3>III</h3>
+              <h2> <b>99$</b> </h2> <a class="btn btn-link" href="#">Get started</a>
+              <hr>
+              <ul class="list-unstyled my-3">
+                <li class="mb-1">Seven</li>
+                <li class="mb-1">Eight</li>
+                <li class="mb-1">Nine</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 p-3">
+          <div class="card bg-light text-center">
+            <div class="card-body p-4">
+              <h3>IV</h3>
+              <h2> <b>159$</b> </h2> <a class="btn btn-link" href="#">Get started</a>
+              <hr>
+              <ul class="list-unstyled my-3">
+                <li class="mb-1">Ten</li>
+                <li class="mb-1">Eleven</li>
+                <li class="mb-1">Twelve</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-3 col-md-6 p-3">
+          <div class="card bg-light text-center">
+            <div class="card-body p-4">
+              <h3>I</h3>
+              <h2> <b>19$</b> </h2> <a class="btn btn-link" href="#">Get started</a>
+              <hr>
+              <ul class="list-unstyled my-3">
+                <li class="mb-1">One</li>
+                <li class="mb-1">Two</li>
+                <li class="mb-1">Three</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 p-3">
+          <div class="card bg-light text-center">
+            <div class="card-body p-4">
+              <h3>II</h3>
+              <h2> <b>49$</b> </h2> <a class="btn btn-primary" href="#">Get started</a>
+              <hr>
+              <ul class="list-unstyled my-3">
+                <li class="mb-1">Four</li>
+                <li class="mb-1">Five</li>
+                <li class="mb-1">Six</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 p-3">
+          <div class="card bg-light text-center">
+            <div class="card-body p-4">
+              <h3>III</h3>
+              <h2> <b>99$</b> </h2> <a class="btn btn-link" href="#">Get started</a>
+              <hr>
+              <ul class="list-unstyled my-3">
+                <li class="mb-1">Seven</li>
+                <li class="mb-1">Eight</li>
+                <li class="mb-1">Nine</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 p-3">
+          <div class="card bg-light text-center">
+            <div class="card-body p-4">
+              <h3>IV</h3>
+              <h2> <b>159$</b> </h2> <a class="btn btn-link" href="#">Get started</a>
+              <hr>
+              <ul class="list-unstyled my-3">
+                <li class="mb-1">Ten</li>
+                <li class="mb-1">Eleven</li>
+                <li class="mb-1">Twelve</li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
       <div class="row">
