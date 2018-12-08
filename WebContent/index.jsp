@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
-<% com.beans.Client client = (com.beans.Client)request.getAttribute("client"); %>
-<% request.setAttribute("client", client); %>
+<% com.beans.Client client = (com.beans.Client)session.getAttribute("client");%>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -28,23 +27,18 @@
       <div class="collapse navbar-collapse text-center justify-content-end" id="navbarPrimaryContent">
         <ul class="navbar-nav">
           <li class="nav-item mx-3">
-            <a class="nav-link align-items-center d-flex" href="<%if(client!=null) out.print("#");else out.print("singup.jsp");%>">
+            <a class="nav-link align-items-center d-flex" href="<%if(client!=null) out.print("#");else out.print("signup.jsp");%>">
             <i class="fa fa-user fa-fw fa-2x"></i>
               </i>&nbsp;
               <% if(client!=null)
                 	out.print(client.getName());
-              		
                   else out.print("CONNECT");
                   %>
-              
               </a>
           </li>
-          <li class="nav-item mx-3">
-            <a class="nav-link align-items-center d-flex" href="#">
-            <i class="fa fa-user fa-fw fa-cogs fa-2x"></i>
-          
-              </i>&nbsp;SETTINGS</a>
-          </li>
+          <% if(client!=null)	
+                  out.print("<li class='nav-item mx-3'><a class='nav-link align-items-center d-flex' href='setting.jsp'><i class='fa fa-user fa-fw fa-cogs fa-2x'></i></i>&nbsp;SETTING</a></li>");
+              %>
           <li class="nav-item dropdown mx-3" style=""> 
           <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <i class="fa fa-fw fa-shopping-cart fa-2x"></i>Cart</a>

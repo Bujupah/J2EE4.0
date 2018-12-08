@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
-
+<% com.beans.Client client = (com.beans.Client)session.getAttribute("client");%>
+<% RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp"); %>
+<% if (client != null) dispatcher.forward(request, response);%>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -30,10 +32,9 @@
             <a class="nav-link align-items-center d-flex" href="signup.jsp"><i class="fa fa-user fa-fw fa-2x"></i>
               </i>&nbsp;SIGN UP</a>
           </li>
-          <li class="nav-item mx-3">
-            <a class="nav-link align-items-center d-flex" href="#"><i class="fa fa-user fa-fw fa-cogs fa-2x"></i>
-              </i>&nbsp;SETTINGS</a>
-          </li>
+          <% if(client!=null)	
+                  out.print("<li class='nav-item mx-3'><a class='nav-link align-items-center d-flex' href='setting.jsp'><i class='fa fa-user fa-fw fa-cogs fa-2x'></i></i>&nbsp;SETTING</a></li>");
+              %>
           <li class="nav-item dropdown mx-3" style=""> <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-fw fa-shopping-cart fa-2x"></i> Cart</a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink"> <a class="dropdown-item" href="#">Total Price:&nbsp;</a></div>
           </li>

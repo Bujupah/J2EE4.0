@@ -3,6 +3,8 @@ import java.sql.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.*;
+
+import com.beans.Client;
 public class DatabaseManager {
 	private Connection connection;
 	private void LoadDatabase() { // basic shit to connect to the database
@@ -51,7 +53,9 @@ public class DatabaseManager {
 			return client;
 	}
 	
-	
+	public void editClient(Client c) {
+		LoadDatabase();
+	}
 	public void getProducts() {
 		// Force it when u gonna display informations to the site !
 	}

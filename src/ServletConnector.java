@@ -7,6 +7,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import javax.websocket.Session;
 
 import com.beans.Client;
 
@@ -37,25 +39,29 @@ public class ServletConnector extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		DatabaseManager base = new DatabaseManager();
-		
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		
-		try {
-			String[] client = base.TestClient(email, password);
-			Client c = new Client();
-			c.setName(client[0]);
-			c.setPhone(Integer.parseInt(client[1]));
-			c.setEmail(client[2]);
+		if((email.isEmpty())&&(password.isEmpty())) {
 			
-			request.setAttribute("client", c);
-			
-			request.getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
-		} catch (NumberFormatException | SQLException e) {
-			// TODO Auto-generated catch block
-			request.setAttribute("error", "Mauvaise combinaison!");
-			request.getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
-
+		}else {
+			try {
+				String[] client = base.TestClient(email, password);
+				HttpSession session = request.getSession();
+				Client c = new Client();
+				c.setName(client[0]);
+				c.setPhone(Integer.parseInt(client[1]));
+				c.setEmail(client[2]);
+				
+				session.setAttribute("client", c);
+				
+				request.getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+			} catch (NumberFormatException | SQLException e) {
+				// TODO Auto-generated catch block
+				request.setAttribute("error", "Mauvaise combinaison!");
+				request.getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+	
+			}
 		}
 		
 	}

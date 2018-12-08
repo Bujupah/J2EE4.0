@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
-<% com.beans.Client client = (com.beans.Client)request.getAttribute("client"); %>
-
+<% com.beans.Client client = (com.beans.Client)session.getAttribute("client");%>
+<% RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp"); %>
+<% if (client != null) dispatcher.forward(request, response);%>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -25,7 +26,9 @@
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarPrimaryContent">
         <span class="navbar-toggler-icon"></span>
       </button>
-      
+      <div class="collapse navbar-collapse text-center justify-content-end" id="navbarPrimaryContent">
+        
+      </div>
     </div>
   </nav>
   <div class="h-100" style="	background-image: url(&quot;signup.jpg&quot;);	background-position: center;	background-size: 100% 100%;	background-repeat: no-repeat;">
