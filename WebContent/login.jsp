@@ -69,6 +69,10 @@
             <div class="row mt-4 pt-2">
               <div class="col" style="">
                 <form method="post" action="profil">
+                <% if((String)request.getAttribute("error")==null)
+                	  out.print("");
+                  else out.println((String)request.getAttribute("error")+"<br> ");
+                  %>
                   <div class="form-group mb-3">
                     <div class="input-group border-0 bg-dark">
                       <div class="input-group-prepend ">
@@ -88,7 +92,9 @@
                     </div>
                   </div>
                   <button type="submit" class="btn mt-4 mb-3 rounded btn-lg btn-dark text-body">SIGN UP</button>
+                  
                 </form>
+                
               </div>
             </div>
           </div>

@@ -59,7 +59,7 @@ public class ServletConnector extends HttpServlet {
 			} catch (NumberFormatException | SQLException e) {
 				// TODO Auto-generated catch block
 				request.setAttribute("error", "Mauvaise combinaison!");
-				request.getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+				request.getServletContext().getRequestDispatcher("/login.jsp").forward(request, response);
 	
 			}
 		}
