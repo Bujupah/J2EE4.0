@@ -9,13 +9,20 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-  
   <servlet>
-  	<servlet-name>Controller</servlet-name>
-  	<servlet-class>ServletManager</servlet-class>
+    <servlet-name>Controller</servlet-name>
+    <servlet-class>ServletManager</servlet-class>
   </servlet>
   <servlet-mapping>
-  	<servlet-name>Controller</servlet-name>
-  	<url-pattern>/join</url-pattern>
+    <servlet-name>Controller</servlet-name>
+    <url-pattern>/join</url-pattern>
+  </servlet-mapping>
+  <servlet>
+  <servlet-name>Connector</servlet-name>
+  	<servlet-class>ServletConnector</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>Connector</servlet-name>
+  	<url-pattern>/profil</url-pattern>
   </servlet-mapping>
 </web-app>

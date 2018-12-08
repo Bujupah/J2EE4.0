@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
-
+<% com.beans.Client client = (com.beans.Client)request.getAttribute("client"); %>
+<% request.setAttribute("client", client); %>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -20,16 +21,23 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12 w-50"><img src="logo.png" width="60" height="60" class="d-inline-block align-top" alt=""></div>
-      </div><a class="navbar-brand" href="#" style="">Pikkatchuuuuu Store</a>
+      </div><a class="navbar-brand" href="index.jsp" style="">Pikkatchuuuuu Store</a>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarPrimaryContent">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse text-center justify-content-end" id="navbarPrimaryContent">
         <ul class="navbar-nav">
           <li class="nav-item mx-3">
-            <a class="nav-link align-items-center d-flex" href="#">
+            <a class="nav-link align-items-center d-flex" href="<%if(client!=null) out.print("#");else out.print("login.jsp");%>">
             <i class="fa fa-user fa-fw fa-2x"></i>
-              </i>&nbsp;PROFILE</a>
+              </i>&nbsp;
+              <% if(client!=null)
+                	out.print(client.getName());
+              		
+                  else out.print("CONNECT");
+                  %>
+              
+              </a>
           </li>
           <li class="nav-item mx-3">
             <a class="nav-link align-items-center d-flex" href="#">

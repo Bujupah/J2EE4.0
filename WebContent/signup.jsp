@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+<% com.beans.Client client = (com.beans.Client)request.getAttribute("client"); %>
 
 <head>
   <meta charset="utf-8">
@@ -24,23 +25,7 @@
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarPrimaryContent">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse text-center justify-content-end" id="navbarPrimaryContent">
-        <ul class="navbar-nav">
-          <li class="nav-item mx-3">
-            <a class="nav-link align-items-center d-flex" href="#"><i class="fa fa-user fa-fw fa-2x"></i>
-              </i>&nbsp;PROFILE</a>
-          </li>
-          <li class="nav-item mx-3">
-            <a class="nav-link align-items-center d-flex" href="#"><i class="fa fa-user fa-fw fa-cogs fa-2x"></i>
-              </i>&nbsp;SETTINGS</a>
-          </li>
-          <li class="nav-item dropdown mx-3" style=""> 
-          <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-fw fa-shopping-cart fa-2x"></i>
-          Cart</a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink"> <a class="dropdown-item" href="#">Total Price:&nbsp;</a></div>
-          </li>
-        </ul>
-      </div>
+      
     </div>
   </nav>
   <div class="h-100" style="	background-image: url(&quot;signup.jpg&quot;);	background-position: center;	background-size: 100% 100%;	background-repeat: no-repeat;">
@@ -68,9 +53,10 @@
             <div class="row mt-4 pt-2">
               <div class="col" style="">
                 <form method="post" action="join">
-                  <% request.setAttribute("", "error"); %>
-                  <% String a = (String)request.getAttribute("error"); %>
-                  <%= a %>
+                  <% if((String)request.getAttribute("error")==null)
+                	  out.print("");
+                  else out.print((String)request.getAttribute("error"));
+                  %>
                   <div class="form-group mb-2">
                     <div class="input-group border-0 bg-dark">
                       <div class="input-group-prepend">
@@ -126,7 +112,7 @@
           <div class="row h-75">
             <div class="col-md-12 m-5 px-5 pl-5 pr-5 pt-5">
               <h5 class="mx-5 mt-5">
-                <b>You have an account ?</b><br><b>Click to log in&nbsp;</b><br><b>now !</b><br></h5><a class="btn btn-dark btn-lg rounded active" href="login.html" style="">Log in</a>
+                <b>You have an account ?</b><br><b>Click to log in&nbsp;</b><br><b>now !</b><br></h5><a class="btn btn-dark btn-lg rounded active" href="login.jsp" style="">Log in</a>
             </div>
           </div>
         </div>

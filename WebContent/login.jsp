@@ -27,8 +27,8 @@
       <div class="collapse navbar-collapse text-center justify-content-end" id="navbarPrimaryContent">
         <ul class="navbar-nav">
           <li class="nav-item mx-3">
-            <a class="nav-link align-items-center d-flex" href="#"><i class="fa fa-user fa-fw fa-2x"></i>
-              </i>&nbsp;PROFILE</a>
+            <a class="nav-link align-items-center d-flex" href="signup.jsp"><i class="fa fa-user fa-fw fa-2x"></i>
+              </i>&nbsp;SIGN UP</a>
           </li>
           <li class="nav-item mx-3">
             <a class="nav-link align-items-center d-flex" href="#"><i class="fa fa-user fa-fw fa-cogs fa-2x"></i>
@@ -67,14 +67,14 @@
             </div>
             <div class="row mt-4 pt-2">
               <div class="col" style="">
-                <form class="">
+                <form method="post" action="profil">
                   <div class="form-group mb-3">
                     <div class="input-group border-0 bg-dark">
                       <div class="input-group-prepend ">
                         <span class="input-group-text" id="basic-addon1">
                         </span>
                       </div>
-                      <input type="email" class="form-control" id="inlineFormInputGroup" placeholder="Email..." required="required">
+                      <input type="email" name="email" class="form-control" id="inlineFormInputGroup" placeholder="Email..." required="required">
                     </div>
                   </div>
                   <div class="form-group mb-2">
@@ -83,7 +83,7 @@
                         <span class="input-group-text" id="basic-addon1">
                         </span>
                       </div>
-                      <input type="password" class="form-control" id="inlineFormInputGroup" placeholder="Password...">
+                      <input type="password" name="password" class="form-control" id="inlineFormInputGroup" placeholder="Password...">
                     </div>
                   </div>
                   <button type="submit" class="btn mt-4 mb-3 rounded btn-lg btn-dark text-body">SIGN UP</button>

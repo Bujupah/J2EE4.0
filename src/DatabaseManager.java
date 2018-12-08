@@ -18,7 +18,7 @@ public class DatabaseManager {
 			e.printStackTrace();
 		}
 	}
-	public void AddClient(String nom,String password, int phone,String email,HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException, SQLException { // adding a client to the database
+	public void AddClient(String nom,String password, int phone,String email) throws ServletException, IOException, SQLException { // adding a client to the database
 		LoadDatabase();
 			PreparedStatement preStatement = connection.prepareStatement("INSERT INTO client VALUES(?,?,?,?)");
 			preStatement.setString(1, nom);
@@ -29,19 +29,29 @@ public class DatabaseManager {
 		
 	}
 	
-	public boolean TestClient(String email,String password) throws SQLException { // testing if authenticated or no, returns true when its true XD
+	public String[] TestClient(String email,String password) throws SQLException { // testing if authenticated or no, returns true when its true XD
 		ResultSet result = null;
 		LoadDatabase();
+		String client[] = new String[3];
 		try {
 			PreparedStatement preStatement = connection.prepareStatement("SELECT * FROM client WHERE email=? AND password=?");
 			preStatement.setString(1, email);
 			preStatement.setString(2, password);
 			result = preStatement.executeQuery();
+			while (result.next())
+		      {
+				client[0] = result.getString("name");
+				client[1] = result.getString("phone");
+				client[2] = result.getString("email");
+		      }
+			
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}
-			return result.next()?true:false;
+			return client;
 	}
+	
+	
 	public void getProducts() {
 		// Force it when u gonna display informations to the site !
 	}

@@ -28,7 +28,7 @@ public class ServletManager extends HttpServlet {
 		String email = request.getParameter("email");
 		if(password.equals(repassword)) {
 			try {
-				base.AddClient(name,password,Integer.parseInt(phone), email,request,response);
+				base.AddClient(name,password,Integer.parseInt(phone), email);
 			} catch (NumberFormatException | SQLException e) {
 				// TODO Auto-generated catch block
 				request.setAttribute("error", "Ce compte existe déja");

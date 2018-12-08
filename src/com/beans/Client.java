@@ -6,22 +6,22 @@ public class Client {
 	int phone;
 	Panier panier = new Panier();
 	
-	void setName(String name){
+	public void setName(String name){
 		this.name=name;
 	}
-	void setEmail(String email) {
+	public void setEmail(String email) {
 		this.email = email;
 	}
-	void setPhone(int phone) {
+	public void setPhone(int phone) {
 		this.phone = phone;
 	}
-	String getName() {
+	public String getName() {
 		return name;
 	}
-	String getEmail() {
+	public String getEmail() {
 		return email;
 	}
-	int getPhone() {
+	public int getPhone() {
 		return phone;
 	}
 	
