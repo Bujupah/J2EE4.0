@@ -27,7 +27,14 @@ public class ServletManager extends HttpServlet {
 		String phone = request.getParameter("phone");
 		String email = request.getParameter("email");
 		if(password.equals(repassword)) {
-			base.AddClient(name,password,Integer.parseInt(phone), email,request,response);
+			try {
+				base.AddClient(name,password,Integer.parseInt(phone), email,request,response);
+			} catch (NumberFormatException | SQLException e) {
+				// TODO Auto-generated catch block
+				request.setAttribute("error", "Ce compte existe déja");
+				request.getServletContext().getRequestDispatcher("/signup.jsp").forward(request, response);
+
+			}
 			request.getServletContext().getRequestDispatcher("/login.jsp").forward(request, response);
 		}else {
 			request.setAttribute("error", "Les deux mots de passes doivent être identiques!");

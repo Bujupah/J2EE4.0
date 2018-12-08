@@ -18,19 +18,15 @@ public class DatabaseManager {
 			e.printStackTrace();
 		}
 	}
-	public void AddClient(String nom,String password, int phone,String email,HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException { // adding a client to the database
+	public void AddClient(String nom,String password, int phone,String email,HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException, SQLException { // adding a client to the database
 		LoadDatabase();
-		try {
 			PreparedStatement preStatement = connection.prepareStatement("INSERT INTO client VALUES(?,?,?,?)");
 			preStatement.setString(1, nom);
 			preStatement.setString(2, password);
 			preStatement.setLong(3, phone);
 			preStatement.setString(4, email);
 			preStatement.executeUpdate();
-		}catch(SQLException e) {
-			request.setAttribute("error", "Ce compte existe déja");
-			request.getServletContext().getRequestDispatcher("/signup.jsp").forward(request, response);
-		}
+		
 	}
 	
 	public boolean TestClient(String email,String password) throws SQLException { // testing if authenticated or no, returns true when its true XD
