@@ -28,7 +28,7 @@
       <div class="collapse navbar-collapse text-center justify-content-end" id="navbarPrimaryContent">
         <ul class="navbar-nav">
           <li class="nav-item mx-3">
-            <a class="nav-link align-items-center d-flex" href="<%if(client!=null) out.print("#");else out.print("login.jsp");%>">
+            <a class="nav-link align-items-center d-flex" href="<%if(client!=null) out.print("#");else out.print("singup.jsp");%>">
             <i class="fa fa-user fa-fw fa-2x"></i>
               </i>&nbsp;
               <% if(client!=null)
