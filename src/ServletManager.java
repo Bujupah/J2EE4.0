@@ -1,11 +1,11 @@
 import java.io.IOException;
+import java.sql.SQLException;
+
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/ServletManager")
 public class ServletManager extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     public ServletManager() {
@@ -14,13 +14,26 @@ public class ServletManager extends HttpServlet {
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
 		
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		DatabaseManager base = new DatabaseManager();
+		
+		String name = request.getParameter("name");
+		String password = request.getParameter("password");
+		String repassword = request.getParameter("repassword");
+		String phone = request.getParameter("phone");
+		String email = request.getParameter("email");
+		if(password.equals(repassword)) {
+			base.AddClient(name,password,Integer.parseInt(phone), email,request,response);
+			request.getServletContext().getRequestDispatcher("/login.jsp").forward(request, response);
+		}else {
+			request.setAttribute("error", "Les deux mots de passes doit être identiques!");
+			request.getServletContext().getRequestDispatcher("/signup.jsp").forward(request, response);
+		}
+		
 		
 	}
 

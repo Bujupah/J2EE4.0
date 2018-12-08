@@ -35,7 +35,7 @@
               </i>&nbsp;SETTINGS</a>
           </li>
           <li class="nav-item dropdown mx-3" style=""> 
-          <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-fw fa-shopping-cart fa-2x"></i>
+          <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-fw fa-shopping-cart fa-2x"></i>
           Cart</a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink"> <a class="dropdown-item" href="#">Total Price:&nbsp;</a></div>
           </li>
@@ -67,14 +67,17 @@
             </div>
             <div class="row mt-4 pt-2">
               <div class="col" style="">
-                <form class="">
+                <form method="post" action="join">
+                  <% request.setAttribute("", "error"); %>
+                  <% String a = (String)request.getAttribute("error"); %>
+                  <%= a %>
                   <div class="form-group mb-2">
                     <div class="input-group border-0 bg-dark">
                       <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon1">
                         </span>
                       </div>
-                      <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="First Name..." required="required">
+                      <input type="text" name="name" class="form-control" id="inlineFormInputGroup" placeholder="First Name..." required="required">
                     </div>
                   </div>
                   <div class="form-group mb-2">
@@ -83,7 +86,7 @@
                         <span class="input-group-text" id="basic-addon1">
                         </span>
                       </div>
-                      <input type="password" class="form-control" id="inlineFormInputGroup" placeholder="Password...">
+                      <input type="password" name="password" class="form-control" id="inlineFormInputGroup" placeholder="Password...">
                     </div>
                   </div>
                   <div class="form-group mb-2">
@@ -92,7 +95,7 @@
                         <span class="input-group-text" id="basic-addon1">
                         </span>
                       </div>
-                      <input type="password" class="form-control" id="inlineFormInputGroup" placeholder="Re-type password...">
+                      <input type="password" name="repassword" class="form-control" id="inlineFormInputGroup" placeholder="Re-type password...">
                     </div>
                   </div>
                   <div class="form-group mb-2">
@@ -101,7 +104,7 @@
                         <span class="input-group-text" id="basic-addon1">
                         </span>
                       </div>
-                      <input type="number" class="form-control" id="inlineFormInputGroup" placeholder="Phone...">
+                      <input type="number" name="phone" class="form-control" id="inlineFormInputGroup" placeholder="Phone...">
                     </div>
                   </div>
                   <div class="form-group mb-3">
@@ -110,7 +113,7 @@
                         <span class="input-group-text" id="basic-addon1">
                         </span>
                       </div>
-                      <input type="email" class="form-control" id="inlineFormInputGroup" placeholder="Email..." required="required">
+                      <input type="email" name="email" class="form-control" id="inlineFormInputGroup" placeholder="Email..." required="required">
                     </div>
                   </div>
                   <button type="submit" class="btn mt-4 mb-3 rounded btn-lg btn-dark text-body">SIGN UP</button>

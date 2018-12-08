@@ -1,4 +1,8 @@
+import java.io.IOException;
 import java.sql.*;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.*;
 public class DatabaseManager {
 	private Connection connection;
 	private void LoadDatabase() { // basic shit to connect to the database
@@ -14,17 +18,18 @@ public class DatabaseManager {
 			e.printStackTrace();
 		}
 	}
-	public void AddClient(String nom,String password, int phone,String email) { // adding a client to the database
+	public void AddClient(String nom,String password, int phone,String email,HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException { // adding a client to the database
 		LoadDatabase();
 		try {
 			PreparedStatement preStatement = connection.prepareStatement("INSERT INTO client VALUES(?,?,?,?)");
 			preStatement.setString(1, nom);
 			preStatement.setString(2, password);
-			preStatement.setInt(3, phone);
+			preStatement.setLong(3, phone);
 			preStatement.setString(4, email);
 			preStatement.executeUpdate();
 		}catch(SQLException e) {
-			e.printStackTrace();
+			request.setAttribute("error", "Ce compte existe déja");
+			request.getServletContext().getRequestDispatcher("/signup.jsp").forward(request, response);
 		}
 	}
 	
