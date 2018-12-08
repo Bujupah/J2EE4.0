@@ -30,7 +30,7 @@ public class ServletManager extends HttpServlet {
 			base.AddClient(name,password,Integer.parseInt(phone), email,request,response);
 			request.getServletContext().getRequestDispatcher("/login.jsp").forward(request, response);
 		}else {
-			request.setAttribute("error", "Les deux mots de passes doit être identiques!");
+			request.setAttribute("error", "Les deux mots de passes doivent être identiques!");
 			request.getServletContext().getRequestDispatcher("/signup.jsp").forward(request, response);
 		}
 		
