@@ -6,6 +6,8 @@
 <% RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp"); %>
 <% if (client != null) {
 	session.setAttribute("client",null);
+	session.setAttribute("products",null);
+	session.setAttribute("product",null);
 	client = null;
 	dispatcher.forward(request, response);
 	}%>
