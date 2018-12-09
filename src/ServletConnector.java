@@ -52,6 +52,8 @@ public class ServletConnector extends HttpServlet {
 				c.setName(client[0]);
 				c.setPhone(Integer.parseInt(client[1]));
 				c.setEmail(client[2]);
+				c.setPass(client[3]);
+				c.setId(Integer.parseInt(client[4]));
 				session.setAttribute("client", c);
 				Product products[] = base.getProducts();
 				session.setAttribute("products", products);

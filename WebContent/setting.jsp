@@ -80,10 +80,10 @@
             </div>
             <div class="row mt-4 pt-2">
               <div class="col" style="">
-                <form method="post" action="join">
-                  <% if((String)request.getAttribute("error")==null)
+                <form method="post" action="change">
+                  <% if((String)request.getAttribute("msg")==null)
                 	  out.print("");
-                  else out.print((String)request.getAttribute("error"));
+                  else out.print((String)request.getAttribute("msg"));
                   %>
                   <div class="form-group mb-2">
                     <div class="input-group border-0 bg-dark">
@@ -91,7 +91,7 @@
                         <span class="input-group-text" id="basic-addon1">
                         </span>
                       </div>
-                      <input type="password" name="oldpassword" class="form-control" id="inlineFormInputGroup" placeholder="Old password ...">
+                      <input type="password" name="oldpass" class="form-control" id="oldpass" placeholder="Old password ...">
                     </div>
                   </div>
                   <div class="form-group mb-2">
@@ -100,7 +100,7 @@
                         <span class="input-group-text" id="basic-addon1">
                         </span>
                       </div>
-                      <input type="text" name="name" class="form-control" value="<% out.print(client.getName()); %>" id="inlineFormInputGroup" value="<% request.getAttribute("name"); %>" placeholder="First Name..." required="required">
+                      <input type="text" name="name" class="form-control" value="<% out.print(client.getName()); %>" id="name" value="<% request.getAttribute("name"); %>" placeholder="First Name..." required="required">
                     </div>
                   </div>
                   <div class="form-group mb-2">
@@ -109,7 +109,7 @@
                         <span class="input-group-text" id="basic-addon1">
                         </span>
                       </div>
-                      <input type="password" name="password" class="form-control" id="inlineFormInputGroup" placeholder="New Password...">
+                      <input type="password" name="newpass" class="form-control" id="newpass" placeholder="New Password...">
                     </div>
                   </div>
                   <div class="form-group mb-2">
@@ -118,7 +118,7 @@
                         <span class="input-group-text" id="basic-addon1">
                         </span>
                       </div>
-                      <input type="password" name="repassword" class="form-control"  id="inlineFormInputGroup" placeholder="Re-type new password...">
+                      <input type="password" name="renewpass" class="form-control"  id="renewpass" placeholder="Re-type new password...">
                     </div>
                   </div>
                   <div class="form-group mb-2">
@@ -127,7 +127,7 @@
                         <span class="input-group-text" id="basic-addon1">
                         </span>
                       </div>
-                      <input type="number" name="phone" class="form-control" value="<% out.print(client.getPhone()); %>" id="inlineFormInputGroup" placeholder="Phone...">
+                      <input type="number" name="phone" class="form-control" value="<% out.print(client.getPhone()); %>" id="phone" placeholder="Phone...">
                     </div>
                   </div>
                   <div class="form-group mb-3">
@@ -136,10 +136,10 @@
                         <span class="input-group-text" id="basic-addon1">
                         </span>
                       </div>
-                      <input type="email" name="email" class="form-control" value="<% out.print(client.getEmail()); %>" id="inlineFormInputGroup" placeholder="Email..." required="required">
+                      <input type="email" name="email" class="form-control" value="<% out.print(client.getEmail()); %>" id="email" placeholder="Email..." required="required">
                     </div>
                   </div>
-                  <button type="submit" class="btn mt-4 mb-3 rounded btn-lg btn-dark text-body">Submit Changes</button>
+                  <button type="button" id="sbm" class="btn mt-4 mb-3 rounded btn-lg btn-dark text-body">Submit Changes</button>
                 </form>
               </div>
             </div>
@@ -190,6 +190,24 @@
         calendarWeeks: true,
         autoclose: true,
         todayHighlight: true
+      });
+      $("#oldpass").keyup(function() {
+    	  if ($(this).val() != "") {
+    		  $(this).attr("required", "required");
+    		  $("#newpass").attr("required", "required");
+    		  $("#renewpass").attr("required", "required");
+    	  } else {
+    		  $(this).removeAttr("required");
+    		  $("#newpass").removeAttr("required");
+    		  $("#renewpass").removeAttr("required");
+    	  }
+      });
+      $("#sbm").click(function() {
+    	  if (($("#newpass").val() != $("#renewpass").val()) && ($("#newpass").val() != "" || $("#renewpass").val() != "")) {
+    		  alert("new password and retyped new password must be equal!");
+    	  } else if($("#newpass").val() === $("#renewpass").val() && $("#newpass") != "") {
+    		  $("form").submit();
+    	  }
       });
     });
   </script>

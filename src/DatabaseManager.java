@@ -22,7 +22,7 @@ public class DatabaseManager {
 	}
 	public void AddClient(String nom,String password, int phone,String email) throws ServletException, IOException, SQLException { // adding a client to the database
 		LoadDatabase();
-			PreparedStatement preStatement = connection.prepareStatement("INSERT INTO client VALUES(?,?,?,?)");
+			PreparedStatement preStatement = connection.prepareStatement("INSERT INTO client(name, password, phone, email) VALUES(?,?,?,?)");
 			preStatement.setString(1, nom);
 			preStatement.setString(2, password);
 			preStatement.setLong(3, phone);
@@ -34,7 +34,7 @@ public class DatabaseManager {
 	public String[] TestClient(String email,String password) throws SQLException { // testing if authenticated or no, returns true when its true XD
 		ResultSet result = null;
 		LoadDatabase();
-		String client[] = new String[3];
+		String client[] = new String[5];
 		try {
 			PreparedStatement preStatement = connection.prepareStatement("SELECT * FROM client WHERE email=? AND password=?");
 			preStatement.setString(1, email);
@@ -45,6 +45,8 @@ public class DatabaseManager {
 				client[0] = result.getString("name");
 				client[1] = result.getString("phone");
 				client[2] = result.getString("email");
+				client[3] = result.getString("password");
+				client[4] = result.getString("id");
 		      }
 			
 		}catch(SQLException e) {
@@ -53,8 +55,21 @@ public class DatabaseManager {
 			return client;
 	}
 	
-	public void editClient(Client c) {
+	public int editClient(Client c) {
 		LoadDatabase();
+		try {
+			PreparedStatement preStatement = connection.prepareStatement("update client set name=?, password=?, email=?, phone=? where id=?");
+			preStatement.setString(1, c.getName());
+			preStatement.setString(2, c.getPass());
+			preStatement.setString(3, c.getEmail());
+			preStatement.setInt(4, c.getPhone());
+			preStatement.setInt(5, c.getId());
+			return preStatement.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return -1;
+		}
 	}
 	public Product[] getProducts() {
 		Product[] products;

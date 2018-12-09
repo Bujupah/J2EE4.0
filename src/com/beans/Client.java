@@ -1,9 +1,23 @@
 package com.beans;
 
 public class Client {
+	int id;
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	String name;
 	String email;
 	int phone;
+	String pass;
+	public String getPass() {
+		return pass;
+	}
+	public void setPass(String pass) {
+		this.pass = pass;
+	}
 	Panier panier = new Panier();
 	
 	public void setName(String name){

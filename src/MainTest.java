@@ -14,14 +14,21 @@ public class MainTest {
 		
 		System.err.println(a.getPhone());*/
 		DatabaseManager db = new DatabaseManager();
-		Product [] products = db.getProducts();
+		/*Product [] products = db.getProducts();
 		Blob test = products[0].getImage();
 		try {
 			String x = Base64.getEncoder().encodeToString(test.getBytes(0, (int) test.length()));
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}*/
+		Client c = new Client();
+		c.setEmail("mohamedchiboub98@gmail.com");
+		c.setId(1);
+		c.setPass("1234");
+		c.setPhone(123456789);
+		c.setName("mohamed");
+		db.editClient(c);
 	}
 
 }
