@@ -5,8 +5,7 @@
 	Client client = (com.beans.Client) session.getAttribute("client");
 	Product[] products = (com.beans.Product[]) session.getAttribute("products");
 %>
-<% RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp"); %>
-<% if (client == null || products == null) response.sendRedirect("index.jsp");%>
+<% if (client == null || products == null) response.sendRedirect("login.jsp");%>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -58,16 +57,17 @@
  		out.print("CONNECT");
  %>
 					</a></li>
-					<%
-						if (client != null)
-							out.print(
-									"<li class='nav-item mx-3'><div class='dropdown'><a class='nav-link dropdown-toggle' href='#' id='navbarDropdownMenuLink' data-toggle='dropdown'><i class='fa fa-fw fa-shopping-cart fa-2x'></i>Cart</a><div class='dropdown-menu dropdown-menu-right' aria-labelledby='navbarDropdownMenuLink'><a class='dropdown-item' href='#'>Total Price:&nbsp;</a></div></div>");
+					<% if (client != null)
+						out.print("<li class='nav-item mx-3'><div class='dropdown'><a class='nav-link dropdown-toggle' href='#' id='navbarDropdownMenuLink' data-toggle='dropdown'><i class='fa fa-fw fa-shopping-cart fa-2x'></i>Cart</a><div class='dropdown-menu dropdown-menu-right' aria-labelledby='navbarDropdownMenuLink'><a class='dropdown-item' href='#'>Total Price:&nbsp;</a></div></div>");
 					%>
-					<%
-						if (client != null)
-							out.print(
-									"<li class='nav-item mx-3'><a class='nav-link align-items-center d-flex' href='setting.jsp'><i class='fa fa-user fa-fw fa-cogs fa-2x'></i></i>&nbsp;SETTING</a></li>");
+					
+					<% if (client != null)
+						out.print("<li class='nav-item mx-3'><a class='nav-link align-items-center d-flex' href='setting.jsp'><i class='fa fa-user fa-fw fa-cogs fa-2x'></i></i>&nbsp;SETTING</a></li>");
 					%>
+					
+					<% if(client!=null)	
+                 		 out.print("<li class='nav-item mx-3'><a class='nav-link align-items-center d-flex' href='disconnect.jsp'><i class='fa fa-user fa-fw fa-cogs fa-2x'></i></i>&nbsp;DISCONNECT</a></li>");
+              		%>
 
 				</ul>
 			</div>
