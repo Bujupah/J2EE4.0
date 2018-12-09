@@ -1,12 +1,10 @@
 --<ScriptOptions statementTerminator=";"/>
 
 CREATE TABLE client (
-	id INT NOT NULL,
 	name VARCHAR(40) NOT NULL,
 	password VARCHAR(40) NOT NULL,
 	phone INT NOT NULL,
-	email VARCHAR(40) NOT NULL,
-	PRIMARY KEY (id)
+	email VARCHAR(40) NOT NULL
 ) ENGINE=InnoDB;
 
 CREATE TABLE product (
