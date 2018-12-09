@@ -49,8 +49,7 @@ public class ClientInfoUpdater extends HttpServlet {
 			}
 			newClient.setPhone(Integer.parseInt(phone));
 			newClient.setEmail(email);
-			newClient.setId(current.getId());
-			int res = base.editClient(newClient);
+			int res = base.editClient(newClient, current.getEmail());
 			if(res == 1) {
 				request.setAttribute("msg", "Changements Sauvegardés!");
 				session.setAttribute("client", newClient);

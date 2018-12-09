@@ -23,12 +23,11 @@ public class MainTest {
 			e.printStackTrace();
 		}*/
 		Client c = new Client();
-		c.setEmail("mohamedchiboub98@gmail.com");
-		c.setId(1);
+		c.setEmail("mohamedchiboub97@gmail.com");
 		c.setPass("1234");
 		c.setPhone(123456789);
 		c.setName("mohamed");
-		db.editClient(c);
+		db.editClient(c, "mohamedchiboub97@gmail.com");
 	}
 
 }
