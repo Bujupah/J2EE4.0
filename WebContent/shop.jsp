@@ -1,7 +1,4 @@
 <%@ page import="com.beans.*"%>
-<%@ page import="java.sql.*"%>
-<%@ page import="java.io.*"%>
-<%@ page import="java.util.*"%>
 <!DOCTYPE html>
 <html>
 <%
@@ -95,7 +92,7 @@
 							<h2>
 								<b><%=products[i].getPrice()%>$</b>
 							</h2>
-							<a class="btn btn-primary" href="#">View Details</a>
+							<a class="btn btn-primary" href="/J2ee4.0/ProductInfo?id=<%=i%>">View Details</a>
 							
 						</div>
 					</div>

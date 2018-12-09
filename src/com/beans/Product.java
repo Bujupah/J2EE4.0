@@ -1,6 +1,13 @@
 package com.beans;
 import java.sql.*;
 public class Product {
+	private int id;
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	private String name;
 	private int price;
 	private String description;

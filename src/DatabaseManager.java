@@ -3,8 +3,8 @@ import java.sql.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.*;
-
 import com.beans.*;
+
 public class DatabaseManager {
 	public Connection connection;
 	public void LoadDatabase() { // basic shit to connect to the database
@@ -87,6 +87,7 @@ public class DatabaseManager {
 			int i = 0;
 			while (fetchedResult.next()) {
 				Product pr = new Product();
+				pr.setId(fetchedResult.getInt(1));
 				pr.setName(fetchedResult.getString(2));
 				pr.setPrice(fetchedResult.getInt(3));
 				pr.setDescription(fetchedResult.getString(4));
