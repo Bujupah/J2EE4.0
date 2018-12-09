@@ -4,7 +4,7 @@ import java.sql.*;
 import javax.servlet.ServletException;
 import javax.servlet.http.*;
 
-import com.beans.Client;
+import com.beans.*;
 public class DatabaseManager {
 	private Connection connection;
 	private void LoadDatabase() { // basic shit to connect to the database
@@ -56,7 +56,34 @@ public class DatabaseManager {
 	public void editClient(Client c) {
 		LoadDatabase();
 	}
-	public void getProducts() {
-		// Force it when u gonna display informations to the site !
+	public Product[] getProducts() {
+		Product[] products;
+		int numberOfProducts = 0;
+		LoadDatabase();
+		try {
+			PreparedStatement preStatement = connection.prepareStatement("SELECT count(*) as nb FROM product");
+			ResultSet result = preStatement.executeQuery();
+			while (result.next()) {
+				numberOfProducts = result.getInt("nb");
+			}
+			products = new Product[numberOfProducts];
+			Statement sttmt = connection.createStatement();
+			ResultSet fetchedResult = sttmt.executeQuery("SELECT * from product");
+			int i = 0;
+			while (fetchedResult.next()) {
+				Product pr = new Product();
+				pr.setName(fetchedResult.getString(2));
+				pr.setPrice(fetchedResult.getInt(3));
+				pr.setDescription(fetchedResult.getString(4));
+				pr.setQuantity(fetchedResult.getInt(5));
+				pr.setImage(fetchedResult.getBlob(6));
+				products[i] = pr;
+				i++;
+			}
+			return products;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 }

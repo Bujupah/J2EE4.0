@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.websocket.Session;
 
-import com.beans.Client;
+import com.beans.*;
 
 /**
  * Servlet implementation class ServletConnector
@@ -52,9 +52,9 @@ public class ServletConnector extends HttpServlet {
 				c.setName(client[0]);
 				c.setPhone(Integer.parseInt(client[1]));
 				c.setEmail(client[2]);
-				
 				session.setAttribute("client", c);
-				
+				Product products[] = base.getProducts();
+				session.setAttribute("products", products);
 				request.getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
 			} catch (NumberFormatException | SQLException e) {
 				// TODO Auto-generated catch block
