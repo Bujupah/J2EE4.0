@@ -109,7 +109,7 @@
                         <span class="input-group-text" id="basic-addon1">
                         </span>
                       </div>
-                      <input type="password" name="password" class="form-control" id="inlineFormInputGroup" placeholder="Password...">
+                      <input type="password" name="password" class="form-control" id="inlineFormInputGroup" placeholder="New Password...">
                     </div>
                   </div>
                   <div class="form-group mb-2">
@@ -118,7 +118,7 @@
                         <span class="input-group-text" id="basic-addon1">
                         </span>
                       </div>
-                      <input type="password" name="repassword" class="form-control"  id="inlineFormInputGroup" placeholder="Re-type password...">
+                      <input type="password" name="repassword" class="form-control"  id="inlineFormInputGroup" placeholder="Re-type new password...">
                     </div>
                   </div>
                   <div class="form-group mb-2">
@@ -127,7 +127,7 @@
                         <span class="input-group-text" id="basic-addon1">
                         </span>
                       </div>
-                      <input type="number" name="phone" class="form-control" value=" <% out.print(client.getPhone()); %>" id="inlineFormInputGroup" placeholder="Phone...">
+                      <input type="number" name="phone" class="form-control" value="<% out.print(client.getPhone()); %>" id="inlineFormInputGroup" placeholder="Phone...">
                     </div>
                   </div>
                   <div class="form-group mb-3">
@@ -139,7 +139,7 @@
                       <input type="email" name="email" class="form-control" value="<% out.print(client.getEmail()); %>" id="inlineFormInputGroup" placeholder="Email..." required="required">
                     </div>
                   </div>
-                  <button type="submit" class="btn mt-4 mb-3 rounded btn-lg btn-dark text-body">Change your setting</button>
+                  <button type="submit" class="btn mt-4 mb-3 rounded btn-lg btn-dark text-body">Submit Changes</button>
                 </form>
               </div>
             </div>
