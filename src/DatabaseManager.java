@@ -6,8 +6,8 @@ import javax.servlet.http.*;
 
 import com.beans.*;
 public class DatabaseManager {
-	private Connection connection;
-	private void LoadDatabase() { // basic shit to connect to the database
+	public Connection connection;
+	public void LoadDatabase() { // basic shit to connect to the database
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 		}catch(ClassNotFoundException e) {

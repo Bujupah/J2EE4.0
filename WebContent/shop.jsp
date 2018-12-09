@@ -90,6 +90,8 @@
 					<div class="card bg-light text-center">
 						<div class="card-body p-4">
 							<h3><%=products[i].getName()%></h3>
+							<img src="/J2ee4.0/GetImage?id=<%=i + 1%>" style="width:100%; margin-bottom: 15px">
+							<br>
 							<h2>
 								<b><%=products[i].getPrice()%>$</b>
 							</h2>
