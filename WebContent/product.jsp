@@ -5,10 +5,7 @@
 	Client client = (com.beans.Client) session.getAttribute("client");
 	Product product = (com.beans.Product) session.getAttribute("product");
 %>
-<%
-	if (client == null || product == null || session.isNew())
-		response.sendRedirect("index.jsp");
-%>
+<% if (client == null || product == null || (com.beans.Product[]) session.getAttribute("products") == null) response.sendRedirect("login.jsp");%>
 
 <head>
 <meta charset="utf-8">
@@ -51,16 +48,22 @@
 					<li class="nav-item mx-3"><a
 						class="nav-link align-items-center d-flex"
 						href="<%if (client != null)
-				out.print("#");
+				out.print("index.jsp");
 			else
 				out.print("login.jsp");%>">
-							<i class="fa fa-user fa-fw fa-2x"></i> </i>&nbsp; <%
+							<%
  	if (client != null)
- 		out.print(client.getName());
+ 		out.print("<i class='fa fa-home fa-fw fa-2x'></i> </i>&nbsp;Home");
  	else
- 		out.print("CONNECT");
+ 		out.print("<i class='fa fa-user fa-fw fa-2x'></i> </i>&nbsp;CONNECT");
  %>
 					</a></li>
+					<%if (client != null) { %>
+					<li class="nav-item mx-3"><a
+						class="nav-link align-items-center d-flex" href="shop.jsp"> <i
+							class="fa fa-shopping-bag  fa-fw fa-2x"></i> </i>&nbsp;Shop
+					</a></li>
+					<% } %>
 					<%
 						if (client != null) {
 					%>
@@ -72,11 +75,11 @@
 								aria-labelledby='navbarDropdownMenuLink'>
 								<%
 									for(int j = 0; j < client.i; j++) {
-										out.print("<a class='dropdown-item' href='#'>" +client.getPanier()[j].getName() + " x " + client.getQuantity()[j] + "</a>");		
+										out.print("<a class='dropdown-item text-center' href='#'>" +client.getPanier()[j].getName() + " x " + client.getQuantity()[j] + "</a>");		
 									}
 								%>
-								<a class='dropdown-item' href='#'>Total Price: <%
-									out.print(client.getTotalSum());
+								<a class='dropdown-item text-center' href='#'>Total Price: <%
+									out.print((int)client.getTotalSum() + " $");
 									if(client.i != 0) {
 										out.print("<a class='dropdown-item text-center' href='#'><input type='button' class='btn btn-primary' value='Pay Now'/></a>");
 									}
@@ -84,11 +87,14 @@
 								</a>
 							</div>
 						</div> <%
- 	}
- 	if (client != null)
+ 	}%>
+ 	<% if (client != null)
  		out.print(
- 				"<li class='nav-item mx-3'><a class='nav-link align-items-center d-flex' href='setting.jsp'><i class='fa fa-user fa-fw fa-cogs fa-2x'></i></i>&nbsp;SETTING</a></li>");
+ 				"<li class='nav-item mx-3'><a class='nav-link align-items-center d-flex' href='setting.jsp'><i class='fa fa-user fa-fw fa-cogs fa-2x'></i></i>&nbsp;"+client.getName()+"</a></li>");
  %>
+  <% if(client!=null)	
+                 		 out.print("<li class='nav-item mx-3'><a class='nav-link align-items-center d-flex' href='disconnect.jsp'><i class='fa fa-sign-out fa-2x'></i></i>&nbsp;DISCONNECT</a></li>");
+              		%>
 				</ul>
 			</div>
 		</div>
@@ -98,22 +104,22 @@
 			<div class="row">
 				<div class="col-md-12 p-3 text-center">
 
-					<h1><%=product.getName()%></h1>
+					<h1><% out.print(product.getName());%></h1>
 
 				</div>
 			</div>
 			<form method="post" action="addToCart">
 				<div class="row">
 					<div class="col-lg-4 col-md-8 col-xs-12 p-3 text-center">
-						<img src="/J2ee4.0/GetImage?id=<%=product.getId() + 1%>"
+						<img src="/J2ee4.0/GetImage?id=<% out.print(product.getId() + 1);%>"
 							style="width: 300px; border-radius: 10px">
 					</div>
 					<div class="col-lg-8 col-md-8 col-xs-8 p-3">
 						<h2>
-							Price: <b><%=product.getPrice()%>$</b>
+							Price: <b><% out.print(product.getPrice());%>$</b>
 						</h2>
 						<h6>Description:</h6>
-						<p><%=product.getDescription()%>
+						<p><% out.print(product.getDescription());%>
 						</p>
 						<br> Select Quantity:
 						<p class="text-center">
@@ -125,7 +131,7 @@
 							</button>
 							<input type="text" id="quantity" name="quantity"
 								class="form-control input-number" value="1" min="1"
-								max="<%=product.getQuantity()%>"> <span
+								max="<% out.print(product.getQuantity());%>"> <span
 								class="input-group-btn">
 								<button type="button" class="btn btn-success btn-number"
 									data-type="plus" data-field="quantity"

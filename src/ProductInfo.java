@@ -26,7 +26,7 @@ public class ProductInfo extends HttpServlet {
 		} else {
 			Product product = ((Product[]) session.getAttribute("products"))[id];
 			session.setAttribute("product", product);
-			request.getServletContext().getRequestDispatcher("/product.jsp").include(request, response);
+			response.sendRedirect("product.jsp");
 		}
 	}
 

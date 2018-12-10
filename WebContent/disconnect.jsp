@@ -2,16 +2,12 @@
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
-<% com.beans.Client client = (com.beans.Client)session.getAttribute("client");%>
-<% RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp"); %>
-<% if (client != null) {
+<%
 	session.setAttribute("client",null);
 	session.setAttribute("products",null);
 	session.setAttribute("product",null);
-	client = null;
-	dispatcher.forward(request, response);
-	}%>
-}
+	response.sendRedirect("index.jsp");
+%>
 <body>
 
 </body>

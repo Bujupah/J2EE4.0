@@ -52,7 +52,7 @@
             <div class="row mt-5">
               <div class="col-md-12">
                 <h5 class="mb-4">
-                  <b>SIGN UP</b>
+                  <b>LOG IN</b>
                 </h5>
                 <button class="btn btn-icon rounded btn-light mx-1 btn-facebook shadow" type="button">
                   <i class="fa fa-fw fa-lg fa-facebook-square"></i>
@@ -90,7 +90,7 @@
                       <input type="password" name="password" class="form-control" id="inlineFormInputGroup" placeholder="Password...">
                     </div>
                   </div>
-                  <button type="submit" class="btn mt-4 mb-3 rounded btn-lg btn-dark text-body">SIGN UP</button>
+                  <button type="submit" class="btn mt-4 mb-3 rounded btn-lg btn-dark text-body">LOG IN</button>
                   
                 </form>
                 

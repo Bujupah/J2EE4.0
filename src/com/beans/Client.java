@@ -32,6 +32,8 @@ public class Client {
 				panier[j] = product;
 				if (quantity[j] + qty <= panier[j].getQuantity())
 					quantity[j] += qty;
+				else 
+					quantity[j] = panier[j].getQuantity();
 				already = true;
 				break;
 			}

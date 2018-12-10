@@ -29,13 +29,12 @@
       <div class="collapse navbar-collapse text-center justify-content-end" id="navbarPrimaryContent">
         <ul class="navbar-nav">
           <li class="nav-item mx-3">
-            <a class="nav-link align-items-center d-flex" href="<%if(client!=null) out.print("#");else out.print("signup.jsp");%>">
-            <i class="fa fa-user fa-fw fa-2x"></i>
-              </i>&nbsp;
+            <a class="nav-link align-items-center d-flex" href="<%if(client!=null) out.print("index.jsp");else out.print("signup.jsp");%>">
+            
               <% if(client!=null)
-                	out.print(client.getName());
+                	out.print("<i class='fa fa-home fa-fw fa-2x'></i>&nbsp;Home");
               		
-                  else out.print("CONNECT");
+                  else out.print("<i class='fa fa-user fa-fw fa-2x'></i>&nbsp;CONNECT");
                   %>     
               </a>
           </li>
@@ -44,13 +43,32 @@
             <i class="fa fa-shopping-bag  fa-fw fa-2x"></i>
               </i>&nbsp;Shop</a>
           </li> 
-          <li class="nav-item dropdown mx-3" style=""> 
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <i class="fa fa-fw fa-shopping-cart fa-2x"></i>Cart</a>
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink"> <a class="dropdown-item" href="#">Total Price:&nbsp;</a></div>
-          </li>
+          <%
+						if (client != null) {
+					%>
+					<li class='nav-item mx-3'><div class='dropdown'>
+							<a class='nav-link dropdown-toggle' href='#'
+								id='navbarDropdownMenuLink' data-toggle='dropdown'><i
+								class='fa fa-fw fa-shopping-cart fa-2x'></i>Cart</a>
+							<div class='dropdown-menu dropdown-menu-right'
+								aria-labelledby='navbarDropdownMenuLink'>
+								<%
+									for(int j = 0; j < client.i; j++) {
+										out.print("<a class='dropdown-item text-center' href='#'>" +client.getPanier()[j].getName() + " x " + client.getQuantity()[j] + "</a>");		
+									}
+								%>
+								<a class='dropdown-item text-center' href='#'>Total Price: <%
+									out.print((int)client.getTotalSum() + " $");
+									if(client.i != 0) {
+										out.print("<a class='dropdown-item text-center' href='#'><input type='button' class='btn btn-primary' value='Pay Now'/></a>");
+									}
+								%>
+								</a>
+							</div>
+						</div> <%
+ 	}%>
               <% if(client!=null)	
-                  out.print("<li class='nav-item mx-3'><a class='nav-link align-items-center d-flex' href='disconnect.jsp'><i class='fa fa-user fa-fw fa-cogs fa-2x'></i></i>&nbsp;DISCONNECT</a></li>");
+                  out.print("<li class='nav-item mx-3'><a class='nav-link align-items-center d-flex' href='disconnect.jsp'><i class='fa fa-sign-out fa-2x'></i></i>&nbsp;DISCONNECT</a></li>");
               %>
         </ul>
       </div>
