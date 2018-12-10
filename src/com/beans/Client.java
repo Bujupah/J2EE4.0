@@ -5,13 +5,50 @@ public class Client {
 	String email;
 	int phone;
 	String pass;
+	Product[] panier = new Product[100];
+	int[] quantity = new int[100];
+	public int i = 0;
+	
+	public double getTotalSum() {
+		double sum = 0;
+		for (int j = 0; j < i; j++) {
+			sum += panier[j].getPrice() * quantity[j];
+		}
+		return sum;
+	}
+	
+	public Product[] getPanier() {
+		return panier;
+	}
+
+	public int[] getQuantity() {
+		return quantity;
+	}
+
+	public void addToCart(Product product, int qty) {
+		boolean already = false;
+		for (int j = 0; j < i; j++) {
+			if (panier[j].equals(product)) {
+				panier[j] = product;
+				if (quantity[j] + qty <= panier[j].getQuantity())
+					quantity[j] += qty;
+				already = true;
+				break;
+			}
+		}
+		if (!already) {
+			panier[i] = product;
+			quantity[i] = qty;
+			i++;
+		}
+	}
+	
 	public String getPass() {
 		return pass;
 	}
 	public void setPass(String pass) {
 		this.pass = pass;
 	}
-	Panier panier = new Panier();
 	
 	public void setName(String name){
 		this.name=name;

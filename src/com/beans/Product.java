@@ -13,6 +13,10 @@ public class Product {
 	private String description;
 	private int quantity;
 	private Blob image;
+	public boolean equals(Product product) {
+		return (this.id == product.getId() && this.name.equals(product.getName()));
+	}
+	
 	public String getName() {
 		return name;
 	}

@@ -57,18 +57,20 @@
  		out.print("CONNECT");
  %>
 					</a></li>
-					<% if (client != null)
-						out.print("<li class='nav-item mx-3'><div class='dropdown'><a class='nav-link dropdown-toggle' href='#' id='navbarDropdownMenuLink' data-toggle='dropdown'><i class='fa fa-fw fa-shopping-cart fa-2x'></i>Cart</a><div class='dropdown-menu dropdown-menu-right' aria-labelledby='navbarDropdownMenuLink'><a class='dropdown-item' href='#'>Total Price:&nbsp;</a></div></div>");
-					%>
-					
-					<% if (client != null)
+					<% if (client != null) {%>
+					<li class='nav-item mx-3'><div class='dropdown'>
+							<a class='nav-link dropdown-toggle' href='#'
+								id='navbarDropdownMenuLink' data-toggle='dropdown'><i
+								class='fa fa-fw fa-shopping-cart fa-2x'></i>Cart</a>
+							<div class='dropdown-menu dropdown-menu-right'
+								aria-labelledby='navbarDropdownMenuLink'>
+								<a class='dropdown-item' href='#'>Total Price:&nbsp;</a>
+							</div>
+						</div> <% }%> <% if (client != null)
 						out.print("<li class='nav-item mx-3'><a class='nav-link align-items-center d-flex' href='setting.jsp'><i class='fa fa-user fa-fw fa-cogs fa-2x'></i></i>&nbsp;SETTING</a></li>");
-					%>
-					
-					<% if(client!=null)	
+					%> <% if(client!=null)	
                  		 out.print("<li class='nav-item mx-3'><a class='nav-link align-items-center d-flex' href='disconnect.jsp'><i class='fa fa-user fa-fw fa-cogs fa-2x'></i></i>&nbsp;DISCONNECT</a></li>");
               		%>
-
 				</ul>
 			</div>
 		</div>
@@ -88,14 +90,16 @@
 				<div class="col-lg-3 col-md-6 p-3">
 					<div class="card bg-light text-center">
 						<div class="card-body p-4">
-							<h3 style="height:80px"><%=products[i].getName()%></h3>
-							<img src="/J2ee4.0/GetImage?id=<%=i + 1%>" style="width:100%; margin-bottom: 15px;;border-radius:10px">
+							<h3 style="height: 80px"><%=products[i].getName()%></h3>
+							<img src="/J2ee4.0/GetImage?id=<%=i + 1%>"
+								style="width: 100%; margin-bottom: 15px;; border-radius: 10px">
 							<br>
 							<h2>
 								<b><%=products[i].getPrice()%>$</b>
 							</h2>
-							<a class="btn btn-primary" href="/J2ee4.0/ProductInfo?id=<%=i%>">View Details</a>
-							
+							<a class="btn btn-primary" href="/J2ee4.0/ProductInfo?id=<%=i%>">View
+								Details</a>
+
 						</div>
 					</div>
 				</div>

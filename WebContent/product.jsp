@@ -3,10 +3,10 @@
 <html>
 <%
 	Client client = (com.beans.Client) session.getAttribute("client");
-	Product product = (com.beans.Product) request.getAttribute("product");
+	Product product = (com.beans.Product) session.getAttribute("product");
 %>
 <%
-	if (client == null || product == null)
+	if (client == null || product == null || session.isNew())
 		response.sendRedirect("index.jsp");
 %>
 
@@ -62,16 +62,33 @@
  %>
 					</a></li>
 					<%
-						if (client != null)
-							out.print(
-									"<li class='nav-item mx-3'><a class='nav-link dropdown-toggle' href='#' id='navbarDropdownMenuLink' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'><i class='fa fa-fw fa-shopping-cart fa-2x'></i>Cart</a><div class='dropdown-menu' aria-labelledby='navbarDropdownMenuLink'><a class='dropdown-item' href='#'>Total Price:&nbsp;</a></div></li> ");
+						if (client != null) {
 					%>
-					<%
-						if (client != null)
-							out.print(
-									"<li class='nav-item mx-3'><a class='nav-link align-items-center d-flex' href='setting.jsp'><i class='fa fa-user fa-fw fa-cogs fa-2x'></i></i>&nbsp;SETTING</a></li>");
-					%>
-
+					<li class='nav-item mx-3'><div class='dropdown'>
+							<a class='nav-link dropdown-toggle' href='#'
+								id='navbarDropdownMenuLink' data-toggle='dropdown'><i
+								class='fa fa-fw fa-shopping-cart fa-2x'></i>Cart</a>
+							<div class='dropdown-menu dropdown-menu-right'
+								aria-labelledby='navbarDropdownMenuLink'>
+								<%
+									for(int j = 0; j < client.i; j++) {
+										out.print("<a class='dropdown-item' href='#'>" +client.getPanier()[j].getName() + " x " + client.getQuantity()[j] + "</a>");		
+									}
+								%>
+								<a class='dropdown-item' href='#'>Total Price: <%
+									out.print(client.getTotalSum());
+									if(client.i != 0) {
+										out.print("<a class='dropdown-item text-center' href='#'><input type='button' class='btn btn-primary' value='Pay Now'/></a>");
+									}
+								%>
+								</a>
+							</div>
+						</div> <%
+ 	}
+ 	if (client != null)
+ 		out.print(
+ 				"<li class='nav-item mx-3'><a class='nav-link align-items-center d-flex' href='setting.jsp'><i class='fa fa-user fa-fw fa-cogs fa-2x'></i></i>&nbsp;SETTING</a></li>");
+ %>
 				</ul>
 			</div>
 		</div>
@@ -85,94 +102,97 @@
 
 				</div>
 			</div>
-			<div class="row">
-				<div class="col-lg-4 col-md-8 col-xs-12 p-3 text-center">
-					<img src="/J2ee4.0/GetImage?id=<%=product.getId() + 1%>"
-						style="width: 300px; border-radius: 10px">
-				</div>
-				<div class="col-lg-8 col-md-8 col-xs-8 p-3">
-					<h2>
-						Price: <b><%=product.getPrice()%>$</b>
-					</h2>
-					<h6>Description:</h6>
-					<p><%=product.getDescription()%>
-					</p>
-					<br> Select Quantity:
-					<p class="text-center">
-					<div class="input-group" style="width: 30%">
-						<button type="button" class="btn btn-danger btn-number"
-							data-type="minus" data-field="quant[2]"
-							style="border-radius: 100px" disabled="disabled">
-							<span class="fa fa-minus"></span>
-						</button>
-						<input type="text" name="quant[2]"
-							class="form-control input-number" value="1" min="1" max="100">
-						<span class="input-group-btn">
-							<button type="button" class="btn btn-success btn-number"
-								data-type="plus" data-field="quant[2]"
-								style="border-radius: 100px; height: 40px;">
-								<span class="fa fa-plus"></span>
-							</button>
-						</span>
-					</div>
-					<button type="submit" class="btn btn-primary"
-						style="margin-top: 25px">Add To Cart!</button>
-					</p>
-				</div>
-			</div>
-			<div class="row"></div>
-		</div>
-		<div class="py-3 bg-dark">
-			<div class="container">
+			<form method="post" action="addToCart">
 				<div class="row">
-					<div class="col-md-12 text-center d-md-flex align-items-center">
-						<i class="d-block fa fa-stop-circle fa-2x mr-md-5 text-primary"></i>
-						<ul class="nav mx-md-auto d-flex justify-content-center">
-							<li class="nav-item"><a class="nav-link active" href="#">Home</a>
-							</li>
-							<li class="nav-item"><a class="nav-link" href="#">Features</a>
-							</li>
-							<li class="nav-item"><a class="nav-link" href="#">Pricing</a>
-							</li>
-							<li class="nav-item"><a class="nav-link" href="#">About</a></li>
-						</ul>
-						<div class="row">
-							<div
-								class="col-md-12 d-flex align-items-center justify-content-md-between justify-content-center my-2">
-								<a href="#"> <i
-									class="d-block fa fa-facebook-official text-muted fa-lg mx-2"></i>
-								</a> <a href="#"> <i
-									class="d-block fa fa-instagram text-muted fa-lg mx-2"></i>
-								</a> <a href="#"> <i
-									class="d-block fa fa-twitter text-muted fa-lg ml-2"></i>
-								</a>
-							</div>
+					<div class="col-lg-4 col-md-8 col-xs-12 p-3 text-center">
+						<img src="/J2ee4.0/GetImage?id=<%=product.getId() + 1%>"
+							style="width: 300px; border-radius: 10px">
+					</div>
+					<div class="col-lg-8 col-md-8 col-xs-8 p-3">
+						<h2>
+							Price: <b><%=product.getPrice()%>$</b>
+						</h2>
+						<h6>Description:</h6>
+						<p><%=product.getDescription()%>
+						</p>
+						<br> Select Quantity:
+						<p class="text-center">
+						<div class="input-group" style="width: 30%">
+							<button type="button" class="btn btn-danger btn-number"
+								data-type="minus" data-field="quantity"
+								style="border-radius: 100px" disabled="disabled">
+								<span class="fa fa-minus"></span>
+							</button>
+							<input type="text" id="quantity" name="quantity"
+								class="form-control input-number" value="1" min="1"
+								max="<%=product.getQuantity()%>"> <span
+								class="input-group-btn">
+								<button type="button" class="btn btn-success btn-number"
+									data-type="plus" data-field="quantity"
+									style="border-radius: 100px; height: 40px;">
+									<span class="fa fa-plus"></span>
+								</button>
+							</span>
+						</div>
+						<button type="submit" class="btn btn-primary"
+							style="margin-top: 25px">Add To Cart!</button>
+
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+	<div class="py-3 bg-dark">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 text-center d-md-flex align-items-center">
+					<i class="d-block fa fa-stop-circle fa-2x mr-md-5 text-primary"></i>
+					<ul class="nav mx-md-auto d-flex justify-content-center">
+						<li class="nav-item"><a class="nav-link active" href="#">Home</a>
+						</li>
+						<li class="nav-item"><a class="nav-link" href="#">Features</a>
+						</li>
+						<li class="nav-item"><a class="nav-link" href="#">Pricing</a>
+						</li>
+						<li class="nav-item"><a class="nav-link" href="#">About</a></li>
+					</ul>
+					<div class="row">
+						<div
+							class="col-md-12 d-flex align-items-center justify-content-md-between justify-content-center my-2">
+							<a href="#"> <i
+								class="d-block fa fa-facebook-official text-muted fa-lg mx-2"></i>
+							</a> <a href="#"> <i
+								class="d-block fa fa-instagram text-muted fa-lg mx-2"></i>
+							</a> <a href="#"> <i
+								class="d-block fa fa-twitter text-muted fa-lg ml-2"></i>
+							</a>
 						</div>
 					</div>
 				</div>
-				<div class="row">
-					<div class="col-md-12 text-center">
-						<p class="mt-2 mb-0">© 2018 Pikkatchuuuu Store. All rights
-							reserved</p>
-					</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12 text-center">
+					<p class="mt-2 mb-0">© 2018 Pikkatchuuuu Store. All rights
+						reserved</p>
 				</div>
 			</div>
 		</div>
-		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-			integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-			crossorigin="anonymous"></script>
-		<script
-			src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-			integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-			crossorigin="anonymous"></script>
-		<script
-			src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-			integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-			crossorigin="anonymous"></script>
-		<script src="parallax.js"></script>
-		<script
-			src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.js"></script>
-		<script>
+	</div>
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+		integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+		crossorigin="anonymous"></script>
+	<script src="parallax.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.js"></script>
+	<script>
 			$(document).ready(function() {
 				$('[data-toggle="popover"]').popover();
 				$('[data-toggle="tooltip"]').tooltip();
