@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="nucleo-icons.css" type="text/css">
   <script src="navbar-ontop.js"></script>
   <link rel="icon" href="logo.png">
-  <title>SignUp HEEEEE ! <3</title>
+  <title>Sign Up</title>
   <meta name="description" content="Start your development with a beautiful Bootstrap 4 UI kit. It is yours Free.">
   <meta name="keywords" content="bootstrap 4, bootstrap 4 uit kit, bootstrap 4 kit, now ui, now ui kit, creative tim, html kit, html css template, web template, bootstrap, bootstrap 4, css3 template, frontend, responsive bootstrap template, bootstrap ui kit, responsive ui kit">
 </head>

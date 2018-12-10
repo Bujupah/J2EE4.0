@@ -19,7 +19,12 @@
 <link rel="stylesheet" href="nucleo-icons.css" type="text/css">
 <script src="navbar-ontop.js"></script>
 <link rel="icon" href="logo.png">
-<title>Shopuuuuuung :v</title>
+<title>Product Details: 
+	<% if (client != null) {
+			out.print(product.getName());
+		}
+		%>
+</title>
 <meta name="description"
 	content="Start your development with a beautiful Bootstrap 4 UI kit. It is yours Free.">
 <meta name="keywords"
@@ -61,7 +66,7 @@
 					<%if (client != null) { %>
 					<li class="nav-item mx-3"><a
 						class="nav-link align-items-center d-flex" href="shop.jsp"> <i
-							class="fa fa-shopping-bag  fa-fw fa-2x"></i> </i>&nbsp;Shop
+							class="fa fa-shopping-bag  fa-fw fa-2x"></i>&nbsp;Shop
 					</a></li>
 					<% } %>
 					<%
@@ -103,23 +108,21 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12 p-3 text-center">
-
-					<h1><% out.print(product.getName());%></h1>
-
+					<h1><% if(product != null)out.print(product.getName());%></h1>
 				</div>
 			</div>
 			<form method="post" action="addToCart">
 				<div class="row">
 					<div class="col-lg-4 col-md-8 col-xs-12 p-3 text-center">
-						<img src="/J2ee4.0/GetImage?id=<% out.print(product.getId() + 1);%>"
+						<img src="/J2ee4.0/GetImage?id=<% if(product != null)out.print(product.getId() + 1);%>"
 							style="width: 300px; border-radius: 10px">
 					</div>
 					<div class="col-lg-8 col-md-8 col-xs-8 p-3">
 						<h2>
-							Price: <b><% out.print(product.getPrice());%>$</b>
+							Price: <b><%if(product != null) out.print(product.getPrice());%>$</b>
 						</h2>
 						<h6>Description:</h6>
-						<p><% out.print(product.getDescription());%>
+						<p><% if(product != null)out.print(product.getDescription());%>
 						</p>
 						<br> Select Quantity:
 						<p class="text-center">
@@ -131,7 +134,7 @@
 							</button>
 							<input type="text" id="quantity" name="quantity"
 								class="form-control input-number" value="1" min="1"
-								max="<% out.print(product.getQuantity());%>"> <span
+								max="<% if(product != null)out.print(product.getQuantity());%>"> <span
 								class="input-group-btn">
 								<button type="button" class="btn btn-success btn-number"
 									data-type="plus" data-field="quantity"
@@ -184,17 +187,11 @@
 			</div>
 		</div>
 	</div>
-	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-		crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-		integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-		crossorigin="anonymous"></script>
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 	<script
-		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-		crossorigin="anonymous"></script>
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 	<script src="parallax.js"></script>
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.js"></script>

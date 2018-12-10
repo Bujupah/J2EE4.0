@@ -2,7 +2,7 @@
 <html>
 <% com.beans.Client client = (com.beans.Client)session.getAttribute("client");%>
 <% RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp"); %>
-<% if (client == null) dispatcher.forward(request, response);%>
+<% if (client == null) response.sendRedirect("index.jsp");%>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="nucleo-icons.css" type="text/css">
   <script src="navbar-ontop.js"></script>
   <link rel="icon" href="logo.png">
-  <title>SignUp HEEEEE ! <3</title>
+  <title>Account Information</title>
   <meta name="description" content="Start your development with a beautiful Bootstrap 4 UI kit. It is yours Free.">
   <meta name="keywords" content="bootstrap 4, bootstrap 4 uit kit, bootstrap 4 kit, now ui, now ui kit, creative tim, html kit, html css template, web template, bootstrap, bootstrap 4, css3 template, frontend, responsive bootstrap template, bootstrap ui kit, responsive ui kit">
 </head>
@@ -118,7 +118,7 @@
                         <span class="input-group-text" id="basic-addon1">
                         </span>
                       </div>
-                      <input type="text" name="name" class="form-control" value="<% out.print(client.getName()); %>" id="name" value="<% request.getAttribute("name"); %>" placeholder="First Name..." required="required">
+                      <input type="text" name="name" class="form-control" value="<% if(client!=null)out.print(client.getName()); %>" id="name" value="<% request.getAttribute("name"); %>" placeholder="First Name..." required="required">
                     </div>
                   </div>
                   <div class="form-group mb-2">
@@ -145,7 +145,7 @@
                         <span class="input-group-text" id="basic-addon1">
                         </span>
                       </div>
-                      <input type="number" name="phone" class="form-control" value="<% out.print(client.getPhone()); %>" id="phone" placeholder="Phone...">
+                      <input type="number" name="phone" class="form-control" value="<%if(client!=null) out.print(client.getPhone()); %>" id="phone" placeholder="Phone...">
                     </div>
                   </div>
                   <div class="form-group mb-3">
@@ -154,7 +154,7 @@
                         <span class="input-group-text" id="basic-addon1">
                         </span>
                       </div>
-                      <input type="email" name="email" class="form-control" value="<% out.print(client.getEmail()); %>" id="email" placeholder="Email..." required="required">
+                      <input type="email" name="email" class="form-control" value="<% if(client!=null)out.print(client.getEmail()); %>" id="email" placeholder="Email..." required="required">
                     </div>
                   </div>
                   <button type="button" id="sbm" class="btn mt-4 mb-3 rounded btn-lg btn-dark text-body">Submit Changes</button>

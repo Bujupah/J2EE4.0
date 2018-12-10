@@ -18,7 +18,7 @@
 <link rel="stylesheet" href="nucleo-icons.css" type="text/css">
 <script src="navbar-ontop.js"></script>
 <link rel="icon" href="logo.png">
-<title>Shopuuuuuung :v</title>
+<title>Shop</title>
 <meta name="description"
 	content="Start your development with a beautiful Bootstrap 4 UI kit. It is yours Free.">
 <meta name="keywords"
