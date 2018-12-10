@@ -48,19 +48,23 @@
 				out.print("index.jsp");
 			else
 				out.print("signup.jsp");%>">
-							 <%
- 	if (client != null)
- 		out.print("<i class='fa fa-home fa-fw fa-2x'></i> </i>&nbsp;Home");
- 	else
- 		out.print("<i class='fa fa-user fa-fw fa-2x'></i> </i>&nbsp;CONNECT");
- %>
+							<%
+								if (client != null)
+									out.print("<i class='fa fa-home fa-fw fa-2x'></i> </i>&nbsp;Home");
+								else
+									out.print("<i class='fa fa-user fa-fw fa-2x'></i> </i>&nbsp;CONNECT");
+							%>
 					</a></li>
-					<%if (client != null) { %>
+					<%
+						if (client != null) {
+					%>
 					<li class="nav-item mx-3"><a
 						class="nav-link align-items-center d-flex" href="shop.jsp"> <i
 							class="fa fa-shopping-bag  fa-fw fa-2x"></i> </i>&nbsp;Shop
 					</a></li>
-					<% } %>
+					<%
+						}
+					%>
 					<%
 						if (client != null) {
 					%>
@@ -71,28 +75,32 @@
 							<div class='dropdown-menu dropdown-menu-right'
 								aria-labelledby='navbarDropdownMenuLink'>
 								<%
-									for(int j = 0; j < client.i; j++) {
-										out.print("<a class='dropdown-item text-center' href='#'>" +client.getPanier()[j].getName() + " x " + client.getQuantity()[j] + "</a>");		
-									}
+									for (int j = 0; j < client.i; j++) {
+											out.print("<a class='dropdown-item text-center' href='#'>" + client.getPanier()[j].getName() + " x "
+													+ client.getQuantity()[j] + "</a>");
+										}
 								%>
 								<a class='dropdown-item text-center' href='#'>Total Price: <%
-									out.print((int)client.getTotalSum() + " $");
-									if(client.i != 0) {
-										out.print("<a class='dropdown-item text-center' href='#'><input type='button' class='btn btn-primary' value='Pay Now'/></a>");
-									}
+									out.print((int) client.getTotalSum() + " $");
+										if (client.i != 0) {
+											out.print(
+													"<a class='dropdown-item text-center' href='#'><input type='button' class='btn btn-primary' value='Pay Now'/></a>");
+										}
 								%>
 								</a>
 							</div>
 						</div> <%
- 	}%>
-					<%
-						if (client != null)
-							out.print(
-									"<li class='nav-item mx-3'><a class='nav-link align-items-center d-flex' href='setting.jsp'><i class='fa fa-user fa-fw fa-cogs fa-2x'></i></i>&nbsp;"+client.getName()+"</a></li>");
-					%>
-					<% if(client!=null)	
-                 		 out.print("<li class='nav-item mx-3'><a class='nav-link align-items-center d-flex' href='disconnect.jsp'><i class='fa fa-sign-out fa-2x'></i></i>&nbsp;DISCONNECT</a></li>");
-              		%>
+ 	}
+ %> <%
+ 	if (client != null)
+ 		out.print(
+ 				"<li class='nav-item mx-3'><a class='nav-link align-items-center d-flex' href='setting.jsp'><i class='fa fa-user fa-fw fa-cogs fa-2x'></i></i>&nbsp;"
+ 						+ client.getName() + "</a></li>");
+ %> <%
+ 	if (client != null)
+ 		out.print(
+ 				"<li class='nav-item mx-3'><a class='nav-link align-items-center d-flex' href='disconnect.jsp'><i class='fa fa-sign-out fa-2x'></i></i>&nbsp;DISCONNECT</a></li>");
+ %>
 				</ul>
 			</div>
 		</div>
@@ -110,47 +118,33 @@
 			</div>
 		</div>
 	</div>
-	<div class="py-5">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-4"></div>
-				<div class="col-md-4"></div>
-				<div class="col-md-4"></div>
-			</div>
-		</div>
-	</div>
 	<div class="py-3">
 		<div class="container">
-			<div class="row">
-				<div class="col-lg-4 col-6 p-3">
-					<img class="img-fluid d-block rounded my-5 mx-auto" src="istic.png">
+			<div class="row" style="margin-top: 210px !important;">
+				<div class="col-lg-6 col-xs-6">
+					<img class="img-fluid d-block rounded" src="istic.png">
 				</div>
-				<div class="col-lg-4 col-6 p-3">
+				<div class="col-lg-3 col-xs-3">
 					<p>
 						<a href="https://goo.gl/maps/AUq7b9W7yYJ2" target="_blank">
-							Fake street, 100 <br>NYC - 20179, USA
+							Technopole de Borj Cédria, Route de Soliman<br>BP 123,
+							Hammam Chatt 1164<br>Ben Arous, Tunisie
 						</a>
 					</p>
+				</div>
+				<div class="col-lg-3 col-xs-3">
 					<p>
-						<a href="tel:+246 - 542 550 5462">+1 - 256 845 87 86</a>
+						<a href="tel:+216 - 79 326 790">+216 79 326 790</a>
 					</p>
 					<p class="mb-0">
-						<a href="mailto:info@pingendo.com">info@pingendo.com</a>
+						<a href="mailto:istic@istic.rnu.tn">istic@istic.rnu.tn</a>
 					</p>
 				</div>
-				<div class="col-md-4 p-3">
-					<h5>
-						<b>About</b>
-					</h5>
-					<p class="mb-0">I am alone, and feel the charm of existence in
-						this spot, which was created for the bliss of souls like mine. I
-						am so happy, my dear friend, so absorbed in the exquisite sense of
-						mere tranquil existence.</p>
-				</div>
+
 			</div>
 			<div class="row">
 				<div class="col-md-12 text-center">
-					<p class="mb-0 mt-2">Â© 2018 Pikkatchuuuu Store. All rights
+					<p class="mb-0 mt-2">© 2018 Pikkatchuuuu Store. All rights
 						reserved</p>
 				</div>
 			</div>

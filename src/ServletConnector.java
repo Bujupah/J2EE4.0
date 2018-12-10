@@ -45,9 +45,9 @@ public class ServletConnector extends HttpServlet {
 		if((email.isEmpty())&&(password.isEmpty())) {
 			
 		}else {
+			HttpSession session = request.getSession();
 			try {
 				String[] client = base.TestClient(email, password);
-				HttpSession session = request.getSession();
 				Client c = new Client();
 				c.setName(client[0]);
 				c.setPhone(Integer.parseInt(client[1]));
@@ -56,11 +56,11 @@ public class ServletConnector extends HttpServlet {
 				session.setAttribute("client", c);
 				Product products[] = base.getProducts();
 				session.setAttribute("products", products);
-				request.getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+				response.sendRedirect("index.jsp");
 			} catch (NumberFormatException | SQLException e) {
 				// TODO Auto-generated catch block
-				request.setAttribute("error", "Mauvaise combinaison!");
-				request.getServletContext().getRequestDispatcher("/login.jsp").forward(request, response);
+				session.setAttribute("error", "Mauvaise combinaison!");
+				response.sendRedirect("login.jsp");
 	
 			}
 		}

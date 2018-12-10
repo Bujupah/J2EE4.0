@@ -5,7 +5,10 @@
 	Client client = (com.beans.Client) session.getAttribute("client");
 	Product product = (com.beans.Product) session.getAttribute("product");
 %>
-<% if (client == null || product == null || (com.beans.Product[]) session.getAttribute("products") == null) response.sendRedirect("login.jsp");%>
+<%
+	if (client == null || product == null || (com.beans.Product[]) session.getAttribute("products") == null)
+		response.sendRedirect("login.jsp");
+%>
 
 <head>
 <meta charset="utf-8">
@@ -19,11 +22,11 @@
 <link rel="stylesheet" href="nucleo-icons.css" type="text/css">
 <script src="navbar-ontop.js"></script>
 <link rel="icon" href="logo.png">
-<title>Product Details: 
-	<% if (client != null) {
-			out.print(product.getName());
-		}
-		%>
+<title>Product Details: <%
+	if (client != null) {
+		out.print(product.getName());
+	}
+%>
 </title>
 <meta name="description"
 	content="Start your development with a beautiful Bootstrap 4 UI kit. It is yours Free.">
@@ -57,18 +60,22 @@
 			else
 				out.print("login.jsp");%>">
 							<%
- 	if (client != null)
- 		out.print("<i class='fa fa-home fa-fw fa-2x'></i> </i>&nbsp;Home");
- 	else
- 		out.print("<i class='fa fa-user fa-fw fa-2x'></i> </i>&nbsp;CONNECT");
- %>
+								if (client != null)
+									out.print("<i class='fa fa-home fa-fw fa-2x'></i> </i>&nbsp;Home");
+								else
+									out.print("<i class='fa fa-user fa-fw fa-2x'></i> </i>&nbsp;CONNECT");
+							%>
 					</a></li>
-					<%if (client != null) { %>
+					<%
+						if (client != null) {
+					%>
 					<li class="nav-item mx-3"><a
 						class="nav-link align-items-center d-flex" href="shop.jsp"> <i
 							class="fa fa-shopping-bag  fa-fw fa-2x"></i>&nbsp;Shop
 					</a></li>
-					<% } %>
+					<%
+						}
+					%>
 					<%
 						if (client != null) {
 					%>
@@ -79,27 +86,32 @@
 							<div class='dropdown-menu dropdown-menu-right'
 								aria-labelledby='navbarDropdownMenuLink'>
 								<%
-									for(int j = 0; j < client.i; j++) {
-										out.print("<a class='dropdown-item text-center' href='#'>" +client.getPanier()[j].getName() + " x " + client.getQuantity()[j] + "</a>");		
-									}
+									for (int j = 0; j < client.i; j++) {
+											out.print("<a class='dropdown-item text-center' href='#'>" + client.getPanier()[j].getName() + " x "
+													+ client.getQuantity()[j] + "</a>");
+										}
 								%>
 								<a class='dropdown-item text-center' href='#'>Total Price: <%
-									out.print((int)client.getTotalSum() + " $");
-									if(client.i != 0) {
-										out.print("<a class='dropdown-item text-center' href='#'><input type='button' class='btn btn-primary' value='Pay Now'/></a>");
-									}
+									out.print((int) client.getTotalSum() + " $");
+										if (client.i != 0) {
+											out.print(
+													"<a class='dropdown-item text-center' href='#'><input type='button' class='btn btn-primary' value='Pay Now'/></a>");
+										}
 								%>
 								</a>
 							</div>
 						</div> <%
- 	}%>
- 	<% if (client != null)
+ 	}
+ %> <%
+ 	if (client != null)
  		out.print(
- 				"<li class='nav-item mx-3'><a class='nav-link align-items-center d-flex' href='setting.jsp'><i class='fa fa-user fa-fw fa-cogs fa-2x'></i></i>&nbsp;"+client.getName()+"</a></li>");
+ 				"<li class='nav-item mx-3'><a class='nav-link align-items-center d-flex' href='setting.jsp'><i class='fa fa-user fa-fw fa-cogs fa-2x'></i></i>&nbsp;"
+ 						+ client.getName() + "</a></li>");
+ %> <%
+ 	if (client != null)
+ 		out.print(
+ 				"<li class='nav-item mx-3'><a class='nav-link align-items-center d-flex' href='disconnect.jsp'><i class='fa fa-sign-out fa-2x'></i></i>&nbsp;DISCONNECT</a></li>");
  %>
-  <% if(client!=null)	
-                 		 out.print("<li class='nav-item mx-3'><a class='nav-link align-items-center d-flex' href='disconnect.jsp'><i class='fa fa-sign-out fa-2x'></i></i>&nbsp;DISCONNECT</a></li>");
-              		%>
 				</ul>
 			</div>
 		</div>
@@ -108,21 +120,37 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12 p-3 text-center">
-					<h1><% if(product != null)out.print(product.getName());%></h1>
+					<h1>
+						<%
+							if (product != null)
+								out.print(product.getName());
+						%>
+					</h1>
 				</div>
 			</div>
 			<form method="post" action="addToCart">
 				<div class="row">
 					<div class="col-lg-4 col-md-8 col-xs-12 p-3 text-center">
-						<img src="/J2ee4.0/GetImage?id=<% if(product != null)out.print(product.getId() + 1);%>"
+						<img
+							src="/J2ee4.0/GetImage?id=<%if (product != null)
+				out.print(product.getId() + 1);%>"
 							style="width: 300px; border-radius: 10px">
 					</div>
 					<div class="col-lg-8 col-md-8 col-xs-8 p-3">
 						<h2>
-							Price: <b><%if(product != null) out.print(product.getPrice());%>$</b>
+							Price: <b>
+								<%
+									if (product != null)
+										out.print(product.getPrice());
+								%>$
+							</b>
 						</h2>
 						<h6>Description:</h6>
-						<p><% if(product != null)out.print(product.getDescription());%>
+						<p>
+							<%
+								if (product != null)
+									out.print(product.getDescription());
+							%>
 						</p>
 						<br> Select Quantity:
 						<p class="text-center">
@@ -134,8 +162,9 @@
 							</button>
 							<input type="text" id="quantity" name="quantity"
 								class="form-control input-number" value="1" min="1"
-								max="<% if(product != null)out.print(product.getQuantity());%>"> <span
-								class="input-group-btn">
+								max="<%if (product != null)
+				out.print(product.getQuantity());%>">
+							<span class="input-group-btn">
 								<button type="button" class="btn btn-success btn-number"
 									data-type="plus" data-field="quantity"
 									style="border-radius: 100px; height: 40px;">
@@ -153,35 +182,26 @@
 	</div>
 	<div class="py-3 bg-dark">
 		<div class="container">
-			<div class="row">
-				<div class="col-md-12 text-center d-md-flex align-items-center">
-					<i class="d-block fa fa-stop-circle fa-2x mr-md-5 text-primary"></i>
-					<ul class="nav mx-md-auto d-flex justify-content-center">
-						<li class="nav-item"><a class="nav-link active" href="#">Home</a>
-						</li>
-						<li class="nav-item"><a class="nav-link" href="#">Features</a>
-						</li>
-						<li class="nav-item"><a class="nav-link" href="#">Pricing</a>
-						</li>
-						<li class="nav-item"><a class="nav-link" href="#">About</a></li>
-					</ul>
-					<div class="row">
-						<div
-							class="col-md-12 d-flex align-items-center justify-content-md-between justify-content-center my-2">
-							<a href="#"> <i
-								class="d-block fa fa-facebook-official text-muted fa-lg mx-2"></i>
-							</a> <a href="#"> <i
-								class="d-block fa fa-instagram text-muted fa-lg mx-2"></i>
-							</a> <a href="#"> <i
-								class="d-block fa fa-twitter text-muted fa-lg ml-2"></i>
-							</a>
-						</div>
-					</div>
+			<div class="row" style="margin-top: 67px !important;">
+				<div class="col-lg-6 col-xs-6">
+					<img class="img-fluid d-block rounded" src="istic.png">
 				</div>
+				<div class="col-lg-3 col-xs-3">
+					<p><a href="#">Technopole de Borj Cédria, Route de Soliman<br>BP 123, Hammam Chatt 1164<br>Ben Arous, Tunisie</a></p>
+				</div>
+				<div class="col-lg-3 col-xs-3">
+					<p>
+						<a href="tel:+216 - 79 326 790">+216 79 326 790</a>
+					</p>
+					<p class="mb-0">
+						<a href="mailto:istic@istic.rnu.tn">istic@istic.rnu.tn</a>
+					</p>
+				</div>
+
 			</div>
 			<div class="row">
 				<div class="col-md-12 text-center">
-					<p class="mt-2 mb-0">Â© 2018 Pikkatchuuuu Store. All rights
+					<p class="mb-0 mt-2">© 2018 Pikkatchuuuu Store. All rights
 						reserved</p>
 				</div>
 			</div>

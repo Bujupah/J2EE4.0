@@ -5,7 +5,10 @@
 	Client client = (com.beans.Client) session.getAttribute("client");
 	Product[] products = (com.beans.Product[]) session.getAttribute("products");
 %>
-<% if (client == null || products == null) response.sendRedirect("login.jsp");%>
+<%
+	if (client == null || products == null)
+		response.sendRedirect("login.jsp");
+%>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -25,7 +28,7 @@
 	content="bootstrap 4, bootstrap 4 uit kit, bootstrap 4 kit, now ui, now ui kit, creative tim, html kit, html css template, web template, bootstrap, bootstrap 4, css3 template, frontend, responsive bootstrap template, bootstrap ui kit, responsive ui kit">
 </head>
 
-<body class="">
+<body class="bg-dark">
 	<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top"
 		style="width: 100%; height: 70px;">
 		<div class="container">
@@ -51,11 +54,11 @@
 			else
 				out.print("login.jsp");%>">
 							<%
- 	if (client != null)
- 		out.print("<i class='fa fa-home fa-fw fa-2x'></i>&nbsp;Home");
- 	else
- 		out.print("<i class='fa fa-user fa-fw fa-2x'></i>&nbsp;CONNECT");
- %>
+								if (client != null)
+									out.print("<i class='fa fa-home fa-fw fa-2x'></i>&nbsp;Home");
+								else
+									out.print("<i class='fa fa-user fa-fw fa-2x'></i>&nbsp;CONNECT");
+							%>
 					</a></li>
 					<%
 						if (client != null) {
@@ -67,25 +70,32 @@
 							<div class='dropdown-menu dropdown-menu-right'
 								aria-labelledby='navbarDropdownMenuLink'>
 								<%
-									for(int j = 0; j < client.i; j++) {
-										out.print("<a class='dropdown-item text-center' href='#'>" +client.getPanier()[j].getName() + " x " + client.getQuantity()[j] + "</a>");		
-									}
+									for (int j = 0; j < client.i; j++) {
+											out.print("<a class='dropdown-item text-center' href='#'>" + client.getPanier()[j].getName() + " x "
+													+ client.getQuantity()[j] + "</a>");
+										}
 								%>
 								<a class='dropdown-item text-center' href='#'>Total Price: <%
-									out.print((int)client.getTotalSum() + " $");
-									if(client.i != 0) {
-										out.print("<a class='dropdown-item text-center' href='#'><input type='button' class='btn btn-primary' value='Pay Now'/></a>");
-									}
+									out.print((int) client.getTotalSum() + " $");
+										if (client.i != 0) {
+											out.print(
+													"<a class='dropdown-item text-center' href='#'><input type='button' class='btn btn-primary' value='Pay Now'/></a>");
+										}
 								%>
 								</a>
 							</div>
 						</div> <%
- 	}%>
- 	<% if (client != null)
-						out.print("<li class='nav-item mx-3'><a class='nav-link align-items-center d-flex' href='setting.jsp'><i class='fa fa-user fa-fw fa-cogs fa-2x'></i></i>&nbsp;"+client.getName()+"</a></li>");
-					%> <% if(client!=null)	
-                 		 out.print("<li class='nav-item mx-3'><a class='nav-link align-items-center d-flex' href='disconnect.jsp'><i class='fa fa-sign-out fa-2x'></i></i>&nbsp;DISCONNECT</a></li>");
-              		%>
+ 	}
+ %> <%
+ 	if (client != null)
+ 		out.print(
+ 				"<li class='nav-item mx-3'><a class='nav-link align-items-center d-flex' href='setting.jsp'><i class='fa fa-user fa-fw fa-cogs fa-2x'></i></i>&nbsp;"
+ 						+ client.getName() + "</a></li>");
+ %> <%
+ 	if (client != null)
+ 		out.print(
+ 				"<li class='nav-item mx-3'><a class='nav-link align-items-center d-flex' href='disconnect.jsp'><i class='fa fa-sign-out fa-2x'></i></i>&nbsp;DISCONNECT</a></li>");
+ %>
 				</ul>
 			</div>
 		</div>
@@ -99,8 +109,8 @@
 			</div>
 			<div class="row">
 				<%
-					if(products != null)
-					for(int i= 0; i <products.length; i++) {
+					if (products != null)
+						for (int i = 0; i < products.length; i++) {
 				%>
 				<div class="col-lg-3 col-md-6 p-3">
 					<div class="card bg-light text-center">
@@ -126,65 +136,61 @@
 	</div>
 	<div class="py-3 bg-dark">
 		<div class="container">
-			<div class="row">
-				<div class="col-md-12 text-center d-md-flex align-items-center">
-					<i class="d-block fa fa-stop-circle fa-2x mr-md-5 text-primary"></i>
-					<ul class="nav mx-md-auto d-flex justify-content-center">
-						<li class="nav-item"><a class="nav-link active" href="#">Home</a>
-						</li>
-						<li class="nav-item"><a class="nav-link" href="#">Features</a>
-						</li>
-						<li class="nav-item"><a class="nav-link" href="#">Pricing</a>
-						</li>
-						<li class="nav-item"><a class="nav-link" href="#">About</a></li>
-					</ul>
-					<div class="row">
-						<div
-							class="col-md-12 d-flex align-items-center justify-content-md-between justify-content-center my-2">
-							<a href="#"> <i
-								class="d-block fa fa-facebook-official text-muted fa-lg mx-2"></i>
-							</a> <a href="#"> <i
-								class="d-block fa fa-instagram text-muted fa-lg mx-2"></i>
-							</a> <a href="#"> <i
-								class="d-block fa fa-twitter text-muted fa-lg ml-2"></i>
-							</a>
-						</div>
-					</div>
+			<div class="row" style="margin-top: 67px !important;">
+				<div class="col-lg-6 col-xs-6">
+					<img class="img-fluid d-block rounded" src="istic.png">
 				</div>
+				<div class="col-lg-3 col-xs-3">
+					<p>
+						<a href="https://goo.gl/maps/AUq7b9W7yYJ2" target="_blank">
+							Technopole de Borj Cédria, Route de Soliman<br>BP 123,
+							Hammam Chatt 1164<br>Ben Arous, Tunisie
+						</a>
+					</p>
+				</div>
+				<div class="col-lg-3 col-xs-3">
+					<p>
+						<a href="tel:+216 - 79 326 790">+216 79 326 790</a>
+					</p>
+					<p class="mb-0">
+						<a href="mailto:istic@istic.rnu.tn">istic@istic.rnu.tn</a>
+					</p>
+				</div>
+
 			</div>
 			<div class="row">
 				<div class="col-md-12 text-center">
-					<p class="mt-2 mb-0">Â© 2018 Pikkatchuuuu Store. All rights
+					<p class="mb-0 mt-2">© 2018 Pikkatchuuuu Store. All rights
 						reserved</p>
 				</div>
 			</div>
 		</div>
-	</div>
-	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-		crossorigin="anonymous"></script>
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-		integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-		crossorigin="anonymous"></script>
-	<script
-		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-		crossorigin="anonymous"></script>
-	<script src="parallax.js"></script>
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.js"></script>
-	<script>
-		$(document).ready(function() {
-			$('[data-toggle="popover"]').popover();
-			$('[data-toggle="tooltip"]').tooltip();
-			$('#datepicker-example').datepicker({
-				calendarWeeks : true,
-				autoclose : true,
-				todayHighlight : true
+		</div>
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+			integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+			crossorigin="anonymous"></script>
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+			integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+			crossorigin="anonymous"></script>
+		<script
+			src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+			integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+			crossorigin="anonymous"></script>
+		<script src="parallax.js"></script>
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.js"></script>
+		<script>
+			$(document).ready(function() {
+				$('[data-toggle="popover"]').popover();
+				$('[data-toggle="tooltip"]').tooltip();
+				$('#datepicker-example').datepicker({
+					calendarWeeks : true,
+					autoclose : true,
+					todayHighlight : true
+				});
 			});
-		});
-	</script>
+		</script>
 </body>
 
 </html>

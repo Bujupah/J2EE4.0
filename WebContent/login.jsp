@@ -68,9 +68,9 @@
             <div class="row mt-4 pt-2">
               <div class="col" style="">
                 <form method="post" action="profil">
-                <% if((String)request.getAttribute("error")==null)
+                <% if((String)session.getAttribute("error")==null)
                 	  out.print("");
-                  else out.println((String)request.getAttribute("error")+"<br> ");
+                  else out.println((String)session.getAttribute("error")+"<br> ");
                   %>
                   <div class="form-group mb-3">
                     <div class="input-group border-0 bg-dark">
@@ -102,28 +102,39 @@
       </div>
     </div>
   </div>
-  <div class="py-3">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-4 col-6 p-3"><img class="img-fluid d-block rounded my-5 mx-auto" src="istic.png"></div>
-        <div class="col-lg-4 col-6 p-3">
-          <p> <a href="https://goo.gl/maps/AUq7b9W7yYJ2" target="_blank"> Fake street, 100 <br>NYC - 20179, USA</a> </p>
-          <p> <a href="tel:+246 - 542 550 5462">+1 - 256 845 87 86</a> </p>
-          <p class="mb-0"> <a href="mailto:info@pingendo.com">info@pingendo.com</a> </p>
-        </div>
-        <div class="col-md-4 p-3">
-          <h5> <b>About</b> </h5>
-          <p class="mb-0"> I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine. I am so happy, my dear friend, so absorbed in the exquisite sense of mere tranquil existence.</p>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-12 text-center">
-          <p class="mb-0 mt-2">Â© 2018 Pikkatchuuuu Store. All rights reserved</p>
-        </div>
-      </div>
-    </div>
-  </div>
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<div class="py-3">
+		<div class="container">
+			<div class="row" style="margin-top: 67px !important;">
+				<div class="col-lg-6 col-xs-6">
+					<img class="img-fluid d-block rounded" src="istic.png">
+				</div>
+				<div class="col-lg-3 col-xs-3">
+					<p>
+						<a href="https://goo.gl/maps/AUq7b9W7yYJ2" target="_blank">
+							Technopole de Borj Cédria, Route de Soliman<br>BP 123,
+							Hammam Chatt 1164<br>Ben Arous, Tunisie
+						</a>
+					</p>
+				</div>
+				<div class="col-lg-3 col-xs-3">
+					<p>
+						<a href="tel:+216 - 79 326 790">+216 79 326 790</a>
+					</p>
+					<p class="mb-0">
+						<a href="mailto:istic@istic.rnu.tn">istic@istic.rnu.tn</a>
+					</p>
+				</div>
+
+			</div>
+			<div class="row">
+				<div class="col-md-12 text-center">
+					<p class="mb-0 mt-2">© 2018 Pikkatchuuuu Store. All rights
+						reserved</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   <script src="parallax.js"></script>
