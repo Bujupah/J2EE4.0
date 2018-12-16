@@ -10,7 +10,8 @@ An e-commerce website with JavaEE
 ### How to set it up
 * Pikkatchuuuuuuuuuuuuu it :p
 
-### Contributers
+### Contributers ![alt text](https://github.com/Bujupah/J2EE4.0/blob/master/GitHub_Mark.png "Github")
+
 * [Med Chiboub](https://github.com/mohamedchiboub97)
 * [Khalil Mejdi](https://github.com/Bujupah)
 * [Sami Ben Abderrazek](https://github.com/samibenabderazak)
