@@ -4,7 +4,7 @@ An e-commerce website with JavaEE
 
 ### Requirements
 1. Eclipse as IDE
-2. Mysql
+2. MySQL
 3. Tomcat7
 3. Library : [mysql-connector-java5.1](https://dev.mysql.com/downloads/connector/j/5.1.html)
 
